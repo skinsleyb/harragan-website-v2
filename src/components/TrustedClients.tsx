@@ -1,7 +1,17 @@
-const clients = [
-  "Marlborough", "Premier Civil Engineering", "McDonald's", "Resin Mill",
-  "Chandler Material Supplies", "March Building", "Excell", "Gilliard Homes",
-  "Mason Building", "MP Dunn", "Anglia University",
+const PLACEHOLDER = `data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='40' viewBox='0 0 120 40'%3E%3Crect width='120' height='40' rx='4' fill='%23e2e8f0'/%3E%3Ctext x='50%25' y='50%25' dominant-baseline='middle' text-anchor='middle' font-family='sans-serif' font-size='10' fill='%2394a3b8'%3ELOGO%3C/text%3E%3C/svg%3E`;
+
+const clientLogos = [
+  { name: "Marlborough", src: PLACEHOLDER },
+  { name: "Premier Civil Engineering", src: PLACEHOLDER },
+  { name: "McDonald's", src: "/assets/mcdonalds.png" },
+  { name: "Resin Mill", src: "/assets/Resin-mill-logo.png" },
+  { name: "Chandler Material Supplies", src: PLACEHOLDER },
+  { name: "March Building", src: PLACEHOLDER },
+  { name: "Excell", src: "/assets/excel-logo.svg" },
+  { name: "Gilliard Homes", src: PLACEHOLDER },
+  { name: "Mason Building", src: PLACEHOLDER },
+  { name: "MP Dunn", src: PLACEHOLDER },
+  { name: "Anglia University", src: PLACEHOLDER },
 ];
 
 const TrustedClients = () => (
@@ -12,11 +22,17 @@ const TrustedClients = () => (
           Trusted by Leading Clients
         </h3>
         <div className="flex flex-wrap items-center justify-center gap-x-3 gap-y-2 sm:gap-x-6 sm:gap-y-3">
-          {clients.map((c) => (
-            <div key={c} className="px-2.5 py-1.5 sm:px-4 sm:py-2 bg-secondary rounded">
-              <span className="font-display text-[10px] sm:text-xs md:text-sm font-bold uppercase text-muted-foreground tracking-wider">
-                {c}
-              </span>
+          {clientLogos.map((client) => (
+            <div
+              key={client.name}
+              className="px-2.5 py-1.5 sm:px-4 sm:py-2 bg-secondary rounded"
+            >
+              <img
+                src={client.src}
+                alt={client.name}
+                title={client.name}
+                className="h-6 sm:h-8 md:h-10 w-auto object-contain"
+              />
             </div>
           ))}
         </div>
