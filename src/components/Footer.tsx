@@ -1,122 +1,222 @@
-import { Phone, Mail, MapPin } from "lucide-react";
+import {
+  Phone,
+  Mail,
+  MapPin,
+  Facebook,
+  Instagram,
+  Linkedin,
+} from "lucide-react";
 import { Link } from "react-router-dom";
 
 const Footer = () => (
-  <footer className="bg-[#1c1c1c] text-primary-foreground pt-28 pb-0">
-    <div className="container mx-auto px-4 py-12 grid md:grid-cols-4 gap-8 text-sm">
-      <div>
-        <h3 className="font-display text-lg font-bold uppercase mb-4">
-          Andy Harragan & Sons LTD
-        </h3>
-        <p className="text-primary-foreground/60 leading-relaxed text-xs">
-          Resin driveway & surfacing specialists. Family-run quality delivering
-          professional resin bound driveways and landscaping across Chelmsford,
-          Essex and nationwide.
+  <footer className="bg-[#111111] text-primary-foreground pt-24">
+    <div className="container mx-auto px-4">
+      <div className="grid gap-12 border-b border-white/10 pb-12 md:grid-cols-2 lg:grid-cols-4">
+        {/* Brand */}
+        <div className="lg:pr-6">
+          <h3 className="font-display text-lg font-bold uppercase tracking-wide">
+            Andy Harragan & Sons LTD
+          </h3>
+
+          <p className="mt-4 max-w-sm text-sm leading-relaxed text-primary-foreground/65">
+            Resin driveway & surfacing specialists. A family-run business
+            delivering professional resin bound driveways and landscaping across
+            Chelmsford, Essex and nationwide.
+          </p>
+        </div>
+
+        {/* Pages */}
+        <div>
+          <h4 className="font-display mb-5 text-xs font-bold uppercase tracking-[0.22em] text-primary-foreground/80">
+            Pages
+          </h4>
+
+          <div className="grid gap-6 sm:grid-cols-2">
+            <div>
+              <p className="mb-3 text-[11px] font-semibold uppercase tracking-[0.18em] text-primary-foreground/40">
+                Main
+              </p>
+              <ul className="space-y-2.5 text-sm text-primary-foreground/65">
+                <li>
+                  <Link
+                    to="/"
+                    className="transition-colors hover:text-primary-foreground"
+                  >
+                    Home
+                  </Link>
+                </li>
+                <li>
+                  <Link
+                    to="/services"
+                    className="transition-colors hover:text-primary-foreground"
+                  >
+                    Services
+                  </Link>
+                </li>
+                <li>
+                  <Link
+                    to="/blog"
+                    className="transition-colors hover:text-primary-foreground"
+                  >
+                    Blog
+                  </Link>
+                </li>
+                <li>
+                  <Link
+                    to="/contact"
+                    className="transition-colors hover:text-primary-foreground"
+                  >
+                    Contact
+                  </Link>
+                </li>
+              </ul>
+            </div>
+
+            <div>
+              <p className="mb-3 text-[11px] font-semibold uppercase tracking-[0.18em] text-primary-foreground/40">
+                Services
+              </p>
+              <ul className="space-y-2.5 text-sm text-primary-foreground/65">
+                <li>
+                  <Link
+                    to="/services/resin-work"
+                    className="transition-colors hover:text-primary-foreground"
+                  >
+                    Resin Work
+                  </Link>
+                </li>
+                <li>
+                  <Link
+                    to="/services/block-paving"
+                    className="transition-colors hover:text-primary-foreground"
+                  >
+                    Block Paving
+                  </Link>
+                </li>
+                <li>
+                  <Link
+                    to="/services/driveways"
+                    className="transition-colors hover:text-primary-foreground"
+                  >
+                    Driveways
+                  </Link>
+                </li>
+                <li>
+                  <Link
+                    to="/services/tarmac-shingle"
+                    className="transition-colors hover:text-primary-foreground"
+                  >
+                    Tarmac / Shingle
+                  </Link>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        {/* Contact + Social */}
+        <div>
+          <h4 className="font-display mb-5 text-xs font-bold uppercase tracking-[0.22em] text-primary-foreground/80">
+            Contact Us
+          </h4>
+
+          <ul className="space-y-3 text-sm text-primary-foreground/65">
+            <li className="flex items-start gap-3">
+              <Phone size={15} className="mt-0.5 shrink-0" />
+              <a
+                href="tel:01245768150"
+                className="transition-colors hover:text-primary-foreground"
+              >
+                01245 768 150
+              </a>
+            </li>
+
+            <li className="flex items-start gap-3">
+              <Mail size={15} className="mt-0.5 shrink-0" />
+              <a
+                href="mailto:info@andyharraganandsons.co.uk"
+                className="break-all transition-colors hover:text-primary-foreground"
+              >
+                info@andyharraganandsons.co.uk
+              </a>
+            </li>
+
+            <li className="flex items-start gap-3">
+              <MapPin size={15} className="mt-0.5 shrink-0" />
+              <span>Chelmsford, Essex</span>
+            </li>
+          </ul>
+
+          <div className="mt-6 border-t border-white/10 pt-5">
+            <p className="mb-3 text-[11px] font-semibold uppercase tracking-[0.18em] text-primary-foreground/40">
+              Social
+            </p>
+
+            <div className="flex flex-wrap gap-3">
+              <a
+                href="https://facebook.com"
+                target="_blank"
+                rel="noreferrer"
+                aria-label="Facebook"
+                className="flex h-10 w-10 items-center justify-center rounded-full border border-white/10 text-primary-foreground/70 transition hover:border-white/25 hover:text-primary-foreground"
+              >
+                <Facebook size={16} />
+              </a>
+
+              <a
+                href="https://instagram.com"
+                target="_blank"
+                rel="noreferrer"
+                aria-label="Instagram"
+                className="flex h-10 w-10 items-center justify-center rounded-full border border-white/10 text-primary-foreground/70 transition hover:border-white/25 hover:text-primary-foreground"
+              >
+                <Instagram size={16} />
+              </a>
+
+              <a
+                href="https://linkedin.com"
+                target="_blank"
+                rel="noreferrer"
+                aria-label="LinkedIn"
+                className="flex h-10 w-10 items-center justify-center rounded-full border border-white/10 text-primary-foreground/70 transition hover:border-white/25 hover:text-primary-foreground"
+              >
+                <Linkedin size={16} />
+              </a>
+            </div>
+          </div>
+        </div>
+
+        {/* Office Hours */}
+        <div>
+          <h4 className="font-display mb-5 text-xs font-bold uppercase tracking-[0.22em] text-primary-foreground/80">
+            Office Hours
+          </h4>
+
+          <div className="rounded-2xl border border-white/10 bg-white/[0.03] p-5">
+            <ul className="space-y-3 text-sm text-primary-foreground/65">
+              <li className="flex items-center justify-between gap-4">
+                <span>Mon - Fri</span>
+                <span className="text-primary-foreground">8:00am - 5:00pm</span>
+              </li>
+              <li className="flex items-center justify-between gap-4">
+                <span>Saturday</span>
+                <span className="text-primary-foreground">9:00am - 2:00pm</span>
+              </li>
+              <li className="flex items-center justify-between gap-4">
+                <span>Sunday</span>
+                <span className="text-primary-foreground">Closed</span>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <div className="py-5">
+        <p className="text-center text-xs text-primary-foreground/40">
+          © {new Date().getFullYear()} Andy Harragan & Sons LTD. All rights
+          reserved.
         </p>
       </div>
-      <div>
-        <h4 className="font-display font-bold uppercase mb-4 text-xs tracking-wider">
-          Pages
-        </h4>
-        <ul className="space-y-2 text-xs text-primary-foreground/60">
-          <li>
-            <Link
-              to="/"
-              className="hover:text-primary-foreground transition-colors"
-            >
-              Home
-            </Link>
-          </li>
-          <li>
-            <Link
-              to="/services"
-              className="hover:text-primary-foreground transition-colors"
-            >
-              Services
-            </Link>
-          </li>
-          <li>
-            <Link
-              to="/blog"
-              className="hover:text-primary-foreground transition-colors"
-            >
-              Blog
-            </Link>
-          </li>
-          <li>
-            <Link
-              to="/services/resin-work"
-              className="hover:text-primary-foreground transition-colors"
-            >
-              Resin Work
-            </Link>
-          </li>
-          <li>
-            <Link
-              to="/services/block-paving"
-              className="hover:text-primary-foreground transition-colors"
-            >
-              Block Paving
-            </Link>
-          </li>
-          <li>
-            <Link
-              to="/services/driveways"
-              className="hover:text-primary-foreground transition-colors"
-            >
-              Driveways
-            </Link>
-          </li>
-          <li>
-            <Link
-              to="/services/tarmac-shingle"
-              className="hover:text-primary-foreground transition-colors"
-            >
-              Tarmac / Shingle
-            </Link>
-          </li>
-          <li>
-            <Link
-              to="/contact"
-              className="hover:text-primary-foreground transition-colors"
-            >
-              Contact
-            </Link>
-          </li>
-        </ul>
-      </div>
-      <div>
-        <h4 className="font-display font-bold uppercase mb-4 text-xs tracking-wider">
-          Contact Us
-        </h4>
-        <ul className="space-y-2.5 text-xs text-primary-foreground/60">
-          <li className="flex items-center gap-2">
-            <Phone size={12} /> 01245 768 150
-          </li>
-          <li className="flex items-center gap-2">
-            <Mail size={12} /> info@andyharraganandsons.co.uk
-          </li>
-          <li className="flex items-start gap-2">
-            <MapPin size={12} className="mt-0.5" /> Chelmsford, Essex
-          </li>
-        </ul>
-      </div>
-      <div>
-        <h4 className="font-display font-bold uppercase mb-4 text-xs tracking-wider">
-          Office Hours
-        </h4>
-        <ul className="space-y-1.5 text-xs text-primary-foreground/60">
-          <li>Mon - Fri: 8:00am - 5:00pm</li>
-          <li>Saturday: 9:00am - 2:00pm</li>
-          <li>Sunday: Closed</li>
-        </ul>
-      </div>
-    </div>
-    <div className="border-t border-primary-foreground/10 py-5">
-      <p className="text-center text-xs text-primary-foreground/40">
-        © {new Date().getFullYear()} Andy Harragan & Sons LTD. All rights
-        reserved.
-      </p>
     </div>
   </footer>
 );
