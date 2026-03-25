@@ -33,8 +33,8 @@ import blockp6 from "@/assets/block-paving/nice-blocks-6.jpeg";
 import blockp7 from "@/assets/block-paving/nice-blocks-7.jpeg";
 
 import blockPavingDriveways from "@/assets/block-paving-d-1.jpeg";
-import permDriveways from "@/assets/permeable-drive.webp";
-import kerbsDriveways from "@/assets/kerp-edging.jpeg";
+import permDriveways from "@/assets/perm-driveway.webp";
+import kerbsDriveways from "@/assets/block-path.jpg";
 import altDriveways from "@/assets/driveway-port-1.jpg";
 
 // driveway gallary
