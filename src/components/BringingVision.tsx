@@ -5,11 +5,12 @@ const BringingVision = () => (
         Bringing Your Vision to Life!
       </h2>
       <p className="mt-4 text-muted-foreground leading-relaxed">
-        With styles, materials and products constantly evolving, Andy keeps up to date with 
-        modern solutions, particularly in resin bound driveway systems and surfacing finishes. 
-        Clients benefit from expert advice, practical design ideas, and honest guidance 
-        tailored to their property and budget. Much of our work comes from word-of-mouth 
-        recommendations — a testament to the trust and quality we deliver on every project.
+        With styles, materials and products constantly evolving, Andy keeps up
+        to date with modern solutions, particularly in resin bound driveway
+        systems and surfacing finishes. Clients benefit from expert advice,
+        practical design ideas, and honest guidance tailored to their property
+        and budget. Much of our work comes from word-of-mouth recommendations —
+        a testament to the trust and quality we deliver on every project.
       </p>
     </div>
   </section>

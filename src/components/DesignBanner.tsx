@@ -16,8 +16,8 @@ const DesignBanner = () => (
         Perfect Designs in 3D
       </h2>
       <p className="mt-4 text-primary-foreground/80 max-w-2xl mx-auto">
-        We use cutting-edge 3D visualisation technology to bring your driveway design
-        to life before a single stone is laid.
+        We use cutting-edge 3D visualisation technology to bring your driveway
+        design to life before a single stone is laid.
       </p>
     </div>
   </section>

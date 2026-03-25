@@ -29,7 +29,9 @@ const RecentProjects = () => (
                 className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
               />
             </div>
-            <p className="text-center text-sm text-muted-foreground mt-2 font-medium">{p.title}</p>
+            <p className="text-center text-sm text-muted-foreground mt-2 font-medium">
+              {p.title}
+            </p>
           </div>
         ))}
       </div>

@@ -1,18 +1,20 @@
 import { Phone, Mail } from "lucide-react";
 
 const CTABanner = () => (
-  <section id="contact" className="relative z-10 pb-0">
+  <section id="contact" className="relative z-10 pb-0 scroll-mt-24">
     <div className="container mx-auto px-4">
       <div className="w-full max-w-[75%] mx-auto bg-primary rounded-2xl shadow-2xl p-8 md:p-12 -mb-20 relative z-10">
         <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-6">
           {/* Left: text */}
           <div className="flex-1">
             <h2 className="font-display text-2xl md:text-3xl lg:text-4xl font-bold uppercase text-primary-foreground leading-tight">
-              Where Quality Craftsmanship Meets<br className="hidden md:block" /> Personalised Service
+              Where Quality Craftsmanship Meets
+              <br className="hidden md:block" /> Personalised Service
             </h2>
             <p className="mt-3 text-primary-foreground/70 max-w-lg text-sm leading-relaxed">
-              Andy will personally visit your property to discuss your requirements. You will receive a free,
-              no-obligation written quotation within 3–4 days.
+              Andy will personally visit your property to discuss your
+              requirements. You will receive a free, no-obligation written
+              quotation within 3–4 days.
             </p>
           </div>
 

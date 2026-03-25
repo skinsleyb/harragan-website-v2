@@ -1,40 +1,77 @@
-const PLACEHOLDER = `data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='40' viewBox='0 0 120 40'%3E%3Crect width='120' height='40' rx='4' fill='%23e2e8f0'/%3E%3Ctext x='50%25' y='50%25' dominant-baseline='middle' text-anchor='middle' font-family='sans-serif' font-size='10' fill='%2394a3b8'%3ELOGO%3C/text%3E%3C/svg%3E`;
+import mcdonalds from "@/assets/mcdonalds.png";
+import resinmill from "@/assets/resin-mill-logo.svg";
+import chandlers from "@/assets/chandlers.png";
+import excell from "@/assets/excel-london.svg";
+import bradstone from "@/assets/bradstone.png";
+import tobermore from "@/assets/tobermore-logo.svg";
+import marlborough from "@/assets/marlborough.png";
+import marshalls from "@/assets/marshalls.svg";
 
-const clientLogos = [
-  { name: "Marlborough", src: PLACEHOLDER },
-  { name: "Premier Civil Engineering", src: PLACEHOLDER },
-  { name: "McDonald's", src: "/assets/mcdonalds.png" },
-  { name: "Resin Mill", src: "/assets/Resin-mill-logo.png" },
-  { name: "Chandler Material Supplies", src: PLACEHOLDER },
-  { name: "March Building", src: PLACEHOLDER },
-  { name: "Excell", src: "/assets/excel-logo.svg" },
-  { name: "Gilliard Homes", src: PLACEHOLDER },
-  { name: "Mason Building", src: PLACEHOLDER },
-  { name: "MP Dunn", src: PLACEHOLDER },
-  { name: "Anglia University", src: PLACEHOLDER },
+interface ClientLogo {
+  src: string;
+  alt: string;
+}
+
+const logos: ClientLogo[] = [
+  { src: mcdonalds, alt: "Client logo" },
+  { src: resinmill, alt: "Client logo" },
+  { src: chandlers, alt: "Client logo" },
+  { src: excell, alt: "Client logo" },
+  { src: bradstone, alt: "Client logo" },
+  { src: tobermore, alt: "Client logo" },
+  { src: marshalls, alt: "Client logo" },
+  { src: marlborough, alt: "Client logo" },
 ];
 
 const TrustedClients = () => (
-  <section className="relative -mt-14 z-20 px-4">
+  <section id="trusted-by" className="bg-white/75 py-12">
+    <style>{`
+      @keyframes marquee {
+        0%   { transform: translateX(0); }
+        100% { transform: translateX(-50%); }
+      }
+
+      .marquee-track {
+        display: flex;
+        width: max-content;
+        animation: marquee 28s linear infinite;
+      }
+
+      .marquee-track:hover {
+        animation-play-state: paused;
+      }
+    `}</style>
+
     <div className="container mx-auto">
-      <div className="bg-card rounded-lg shadow-xl p-4 sm:p-6 md:p-8">
-        <h3 className="font-display text-sm sm:text-lg md:text-xl font-bold uppercase text-center text-foreground mb-4 sm:mb-5">
-          Trusted by Leading Clients
-        </h3>
-        <div className="flex flex-wrap items-center justify-center gap-x-3 gap-y-2 sm:gap-x-6 sm:gap-y-3">
-          {clientLogos.map((client) => (
-            <div
-              key={client.name}
-              className="px-2.5 py-1.5 sm:px-4 sm:py-2 bg-secondary rounded"
-            >
-              <img
-                src={client.src}
-                alt={client.name}
-                title={client.name}
-                className="h-6 sm:h-8 md:h-10 w-auto object-contain"
-              />
-            </div>
-          ))}
+      <div className="mb-6 flex flex-col items-center gap-4">
+        {/* Title */}
+        <h2 className="text-sm font-bold uppercase tracking-[0.22em] text-black/75">
+          Trusted by leading brands
+        </h2>
+
+        {/* Marquee container — constrained to 60% width, centered, clipped */}
+        <div className="mx-auto overflow-hidden" style={{ width: "60%" }}>
+          <div className="marquee-track">
+            {/* Render logos twice for seamless loop */}
+            {[...logos, ...logos].map((logo, i) => (
+              <div
+                key={i}
+                className="flex-shrink-0 flex items-center justify-center"
+                style={{ width: "120px", height: "80px", marginRight: "40px" }}
+              >
+                <img
+                  src={logo.src}
+                  alt={logo.alt}
+                  style={{
+                    maxWidth: "100%",
+                    maxHeight: "100%",
+                    objectFit: "contain",
+                    display: "block",
+                  }}
+                />
+              </div>
+            ))}
+          </div>
         </div>
       </div>
     </div>

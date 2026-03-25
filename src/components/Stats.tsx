@@ -8,14 +8,25 @@ const stats = [
 ];
 
 const Stats = () => (
-  <section className="bg-primary py-10">
-    <div className="container mx-auto px-4 grid grid-cols-2 md:grid-cols-4 gap-6">
+  <section className="relative overflow-hidden py-10 bg-white/75">
+    {/* Soft overlay for readability */}
+    <div className="absolute inset-0 bg-white/5" />
+
+    <div className="relative container mx-auto grid grid-cols-2 gap-6 px-4 md:grid-cols-4">
       {stats.map((s) => (
-        <div key={s.label} className="flex flex-col items-center text-center gap-1.5">
-          <span className="font-display text-4xl md:text-5xl font-bold text-primary-foreground">{s.value}</span>
+        <div
+          key={s.label}
+          className="flex flex-col items-center gap-1.5 text-center"
+        >
+          <span className="font-display text-4xl font-bold text-black md:text-5xl">
+            {s.value}
+          </span>
+
           <div className="flex items-center gap-1.5">
-            <s.icon className="text-accent" size={16} />
-            <span className="text-primary-foreground/70 text-xs font-semibold uppercase tracking-wider">{s.label}</span>
+            <s.icon className="text-primary-black/80" size={16} />
+            <span className="text-xs font-semibold uppercase tracking-wider text-primary-black/70">
+              {s.label}
+            </span>
           </div>
         </div>
       ))}
