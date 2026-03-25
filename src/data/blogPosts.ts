@@ -5,6 +5,7 @@ import serviceSandstone from "@/assets/service-sandstone.jpg";
 export type BlogPost = {
   slug: string;
   title: string;
+  category?: string;
   excerpt: string;
   date: string;
   image: string;

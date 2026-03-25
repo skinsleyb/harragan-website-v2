@@ -10,6 +10,7 @@ import Testimonials from "@/components/Testimonials";
 import BlogSection from "@/components/BlogSection";
 import CTABanner from "@/components/CTABanner";
 import Footer from "@/components/Footer";
+import ContactSection from "@/components/sections/ContactSection";
 
 const Index = () => (
   <>
@@ -23,7 +24,7 @@ const Index = () => (
     <RecentProjects />
     <Testimonials />
     <BlogSection />
-    <CTABanner />
+    <ContactSection />
     <Footer />
   </>
 );

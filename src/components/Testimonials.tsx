@@ -62,7 +62,7 @@ const Testimonials = () => {
   const isLong = current.text.length > 260;
 
   return (
-    <section className="bg-[#f6f5f5] py-16 md:py-24">
+    <section className="bg-white/75 py-16 md:py-24">
       <div className="container mx-auto px-2">
         {/* Heading */}
         <div className="mx-auto max-w-3xl text-center">
@@ -109,7 +109,7 @@ const Testimonials = () => {
               </div>
 
               {/* Footer */}
-              <div className="mt-8 border-t border-black/10 pt-6 flex items-center justify-between">
+              <div className="mt-8 pt-6 flex items-center justify-between">
                 <div className="flex items-center gap-4">
                   <img
                     src={current.image}
