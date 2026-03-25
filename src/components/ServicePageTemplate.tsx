@@ -343,6 +343,7 @@ export default ServicePageTemplate;
 
 export const resinServiceV2: ServicePageConfig = {
   title: "15 Years In The Resin Industry",
+  subtitle: "",
   contactLabel: "Get a quote",
   heroImage: heroImg,
   trustedBy: [

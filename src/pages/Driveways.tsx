@@ -1,5 +1,5 @@
 import ServicePageTemplate, {
-  resinServiceV2,
+  blockPavingServiceV2,
 } from "@/components/ServicePageTemplate";
-const Driveways = () => <ServicePageTemplate service={resinServiceV2} />;
+const Driveways = () => <ServicePageTemplate service={blockPavingServiceV2} />;
 export default Driveways;
