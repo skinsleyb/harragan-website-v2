@@ -82,23 +82,13 @@ const Navbar = () => {
 
             {dropdownOpen && (
               <div className="absolute top-full mt-2 left-1/2 -translate-x-1/2 bg-card rounded-xl shadow-xl border border-border/50 py-2 min-w-[200px]">
-                {isHome ? (
-                  <a
-                    href="#services"
-                    onClick={() => setDropdownOpen(false)}
-                    className="block px-4 py-2.5 text-xs font-semibold uppercase tracking-wider text-foreground hover:bg-accent/10 transition-colors"
-                  >
-                    All Services
-                  </a>
-                ) : (
-                  <Link
-                    to="/services"
-                    onClick={() => setDropdownOpen(false)}
-                    className="block px-4 py-2.5 text-xs font-semibold uppercase tracking-wider text-foreground hover:bg-accent/10 transition-colors"
-                  >
-                    All Services
-                  </Link>
-                )}
+                <Link
+                  to="/services"
+                  onClick={() => setDropdownOpen(false)}
+                  className="block px-4 py-2.5 text-xs font-semibold uppercase tracking-wider text-foreground hover:bg-accent/10 transition-colors"
+                >
+                  All Services
+                </Link>
 
                 <div className="border-t border-border/50 my-1" />
 
