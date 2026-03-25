@@ -1,22 +1,16 @@
 import {
-  ArrowDown,
   ArrowRight,
   CheckCircle2,
   Droplets,
   Grip,
   HardHat,
   LayoutGrid,
-  MousePointerClick,
-  Phone,
-  Quote,
   ShieldCheck,
   SquareStack,
-  Star,
 } from "lucide-react";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import { SplitSection } from "./SplitSection";
-import driveway from "@/assets/nice-drive.jpg";
 import heroImg from "@/assets/nice-drive.jpg";
 import section1Img from "@/assets/dorset-resin.jpg";
 import section1Img2 from "@/assets/resin-nice-2.jpg";
@@ -24,28 +18,22 @@ import section1Img3 from "@/assets/nice-drive.jpg";
 import section1Img4 from "@/assets/Resin.png";
 
 // block paving
-import blockp1 from "@/assets/block-paving/nice-blocks-1.jpeg";
 import blockp2 from "@/assets/block-paving/nice-blocks-2.jpeg";
 import blockp3 from "@/assets/block-paving/nice-blocks-3.jpeg";
 import blockp4 from "@/assets/block-paving/nice-blocks-4.jpeg";
-import blockp5 from "@/assets/block-paving/nice-blocks-5.jpeg";
-import blockp6 from "@/assets/block-paving/nice-blocks-6.jpeg";
-import blockp7 from "@/assets/block-paving/nice-blocks-7.jpeg";
 
 import blockPavingDriveways from "@/assets/block-paving-d-1.jpeg";
 import permDriveways from "@/assets/perm-driveway.webp";
 import kerbsDriveways from "@/assets/block-path.jpg";
 import altDriveways from "@/assets/driveway-port-1.jpg";
 
-// driveway gallary
+// driveway gallery
 import dg1 from "@/assets/driveway-port-1.jpg";
 import dg2 from "@/assets/port-drive-2.webp";
 import dg3 from "@/assets/port-drive-3.webp";
 import dg4 from "@/assets/port-drive-4.webp";
 import dg5 from "@/assets/port-drive-5.webp";
 import dg6 from "@/assets/nice-drive.jpg";
-
-// gallary resin
 
 import TrustedClients from "./TrustedClients";
 import Testimonials from "./Testimonials";
@@ -79,6 +67,17 @@ export interface TestimonialItem {
   quote: string;
 }
 
+export interface ServiceExperienceConfig {
+  label: string;
+  title: string;
+  intro: string;
+  outro: string;
+  services: string[];
+  experienceText: string;
+  qualityText: string;
+  serviceBlockText: string;
+}
+
 export interface ServicePageConfig {
   title: string;
   subtitle: string;
@@ -89,6 +88,8 @@ export interface ServicePageConfig {
   trustedByTitle?: string;
   trustedBy?: LogoItem[];
 
+  experienceSection: ServiceExperienceConfig;
+
   section1Title: string;
   section1Intro?: string;
   section1Cards: FeatureCard[];
@@ -96,13 +97,13 @@ export interface ServicePageConfig {
   section1CtaHref?: string;
 
   section2Title?: string;
-  section2Cards: SplitCard[]; // expects 4 cards
+  section2Cards: SplitCard[];
 
   testimonialsTitle?: string;
   testimonials?: TestimonialItem[];
 
   galleryTitle?: string;
-  galleryImages?: string[]; // expects 6
+  galleryImages?: string[];
 
   contactCtaTitle?: string;
   contactCtaBody?: string;
@@ -121,15 +122,6 @@ const scrollToFirstSection = () => {
   el?.scrollIntoView({ behavior: "smooth", block: "start" });
 };
 
-const PlaceholderImage = ({ label }: { label: string }) => (
-  <div className="relative h-full min-h-[260px] w-full overflow-hidden rounded-[24px] bg-black/5">
-    <div className="absolute inset-0 bg-gradient-to-br from-black/5 via-transparent to-black/10" />
-    <div className="flex h-full items-center justify-center p-6 text-center text-sm font-medium text-black/45">
-      {label}
-    </div>
-  </div>
-);
-
 const ServicePageTemplate = ({ service }: Props) => {
   const {
     title,
@@ -139,6 +131,7 @@ const ServicePageTemplate = ({ service }: Props) => {
     contactHref = "tel:+440000000000",
     trustedByTitle = "Trusted by",
     trustedBy = [],
+    experienceSection,
     section1Title,
     section1Intro,
     section1Cards,
@@ -174,28 +167,17 @@ const ServicePageTemplate = ({ service }: Props) => {
         scrollToFirstSection={scrollToFirstSection}
       />
 
-      {/* Section Clients */}
       <TrustedClients />
 
       <ServiceExperienceSection
-        label="Driveways"
-        title="Our Driveway & Paving Services"
-        intro="Andy Harragan & Sons Ltd provide a complete range of driveway installation, surfacing, and paving services across Essex and surrounding areas. Whether you are looking to enhance your home’s kerb appeal or require a durable commercial surface, our experienced team delivers high-quality, long-lasting results."
-        outro="A professionally installed driveway not only enhances the appearance of your property but can also increase its value and market appeal. Choosing Andy Harragan & Sons Ltd ensures your home makes a strong first impression with a driveway built to last."
-        services={[
-          "Driveway Installation & Design",
-          "Resin Driveways",
-          "Tarmac Driveways",
-          "Gravel & Shingle Driveways",
-          "Block Paving",
-          "Porcelain Paving",
-          "Sandstone & Natural Stone",
-          "Concrete Driveways",
-          "Pathways & Walkways",
-        ]}
-        experienceText="With over 30 years of hands-on experience, our team has built a reputation for delivering dependable workmanship and exceptional results across every type of driveway and paving project."
-        qualityText="We carefully prepare every surface and use trusted materials to ensure your new driveway is attractive, practical, and built for long-term performance."
-        serviceBlockText="From your first consultation through to the finished installation, we provide honest advice, professional service, and a smooth customer experience from start to finish."
+        label={experienceSection.label}
+        title={experienceSection.title}
+        intro={experienceSection.intro}
+        outro={experienceSection.outro}
+        services={experienceSection.services}
+        experienceText={experienceSection.experienceText}
+        qualityText={experienceSection.qualityText}
+        serviceBlockText={experienceSection.serviceBlockText}
       />
 
       <section id="section-1" className="bg-[#f6f5f5] py-16 md:py-24">
@@ -208,14 +190,8 @@ const ServicePageTemplate = ({ service }: Props) => {
             <h2 className="mt-3 text-3xl font-semibold uppercase tracking-tight text-black md:text-5xl">
               {section1Title}
             </h2>
-
-            {/* {section1Intro && (
-              <p className="mt-5 text-base leading-relaxed text-black/65 md:text-lg">
-                {section1Intro}
-              </p>
-            )} */}
           </div>
-          {/* SECTION 1 */}
+
           <div className="mx-auto mt-10 max-w-5xl">
             <div className="grid justify-center gap-6 md:grid-cols-2">
               {section1Cards.map((card) => {
@@ -226,16 +202,6 @@ const ServicePageTemplate = ({ service }: Props) => {
                     key={card.title}
                     className="overflow-hidden rounded-xl bg-white/75 text-black"
                   >
-                    {/* IMAGE
-                    <div className="h-[260px] w-full overflow-hidden">
-                      <img
-                        src={card.image}
-                        alt={card.title}
-                        className="h-full w-full object-cover"
-                      />
-                    </div> */}
-
-                    {/* CARD CONTENT */}
                     <div className="p-9">
                       <div className="flex items-start justify-between gap-4">
                         <h3 className="text-2xl font-semibold uppercase leading-tight tracking-tight">
@@ -267,7 +233,6 @@ const ServicePageTemplate = ({ service }: Props) => {
         </div>
       </section>
 
-      {/* SECTION 2 */}
       <div className="mt-10 flex flex-col">
         {splitCards.map((item, i) => {
           if (!item) return null;
@@ -281,7 +246,6 @@ const ServicePageTemplate = ({ service }: Props) => {
               buttonHref={item.ctaHref ?? "/contact"}
               imageSrc={item.image}
               imageAlt={item.title}
-              // Alternate sides for visual variety — remove if you want all the same
               imagePosition={i % 2 === 0 ? "left" : "right"}
             />
           );
@@ -331,7 +295,6 @@ const ServicePageTemplate = ({ service }: Props) => {
         </div>
       </section>
 
-      {/* Contact Section */}
       <ContactSection />
 
       <Footer />
@@ -353,6 +316,31 @@ export const resinServiceV2: ServicePageConfig = {
     { name: "Trusted Brand 4" },
     { name: "Trusted Brand 5" },
   ],
+  experienceSection: {
+    label: "Resin",
+    title: "Our Resin Surfacing Services",
+    intro:
+      "Andy Harragan & Sons Ltd provide a complete range of resin surfacing services across Essex and surrounding areas. Whether you are improving a domestic driveway, creating attractive pathways or installing a durable commercial surface, our team delivers resin systems that combine appearance, performance and long-term value.",
+    outro:
+      "A professionally installed resin surface can transform the look of your property while offering a practical, low-maintenance and SUDS-compliant finish. Choosing Andy Harragan & Sons Ltd means investing in a surface that is both visually impressive and built to last.",
+    services: [
+      "Resin Bound Driveways",
+      "Resin Bonded Driveways",
+      "Resin Paths & Walkways",
+      "Resin Patios",
+      "Commercial Resin Surfacing",
+      "Courtyards & Public Areas",
+      "Cycle Paths",
+      "Play Areas",
+      "Rubber Crumb Safety Surfaces",
+    ],
+    experienceText:
+      "With extensive hands-on experience in resin surfacing, our team delivers dependable workmanship and consistently high standards across residential and commercial projects.",
+    qualityText:
+      "We use trusted materials and careful preparation methods to ensure every resin surface is attractive, hard-wearing, permeable where required, and built for long-term performance.",
+    serviceBlockText:
+      "From initial advice and design through to final installation, we provide honest guidance, professional service and a smooth customer experience from start to finish.",
+  },
   section1Title: "Introducing Resin Surfaces",
   section1Intro:
     "Built as a cleaner, more modern service page structure with a clear hero, supporting trust signals, feature cards, split content rows, testimonials, gallery and final contact CTA.",
@@ -447,7 +435,7 @@ export const blockPavingServiceV2: ServicePageConfig = {
   title: "15 Years In The Driveway Industry",
   subtitle: "",
   contactLabel: "Get a quote",
-  heroImage: [blockp2, blockp3, blockp4], // p2, p3, p4
+  heroImage: [blockp2, blockp3, blockp4],
   trustedBy: [
     { name: "Trusted Brand 1" },
     { name: "Trusted Brand 2" },
@@ -455,6 +443,31 @@ export const blockPavingServiceV2: ServicePageConfig = {
     { name: "Trusted Brand 4" },
     { name: "Trusted Brand 5" },
   ],
+  experienceSection: {
+    label: "Block Paving",
+    title: "Our Block Paving & Driveway Services",
+    intro:
+      "Andy Harragan & Sons Ltd provide a complete range of block paving installation, surfacing and paving services across Essex and surrounding areas. Whether you are improving your home’s kerb appeal or need a durable commercial surface, our experienced team delivers high-quality, long-lasting results.",
+    outro:
+      "A professionally installed block paved driveway not only improves the appearance of your property but can also increase its value and market appeal. Choosing Andy Harragan & Sons Ltd ensures your property makes a strong first impression with paving built to last.",
+    services: [
+      "Block Paving Driveways",
+      "Permeable Block Paving",
+      "Paths & Walkways",
+      "Kerbs & Edging",
+      "Patios & Courtyards",
+      "Driveway Installation & Design",
+      "Tarmac Driveways",
+      "Resin Driveways",
+      "Concrete Driveways",
+    ],
+    experienceText:
+      "With over 30 years of hands-on experience, our team has built a reputation for delivering dependable workmanship and exceptional results across every type of driveway and paving project.",
+    qualityText:
+      "We carefully prepare every surface and use trusted materials to ensure your new driveway is attractive, practical and built for long-term performance.",
+    serviceBlockText:
+      "From your first consultation through to the finished installation, we provide honest advice, professional service and a smooth customer experience from start to finish.",
+  },
   section1Title: "Introducing Block Paving",
   section1Intro:
     "Block paving is a durable, versatile and attractive surfacing solution for driveways, patios and paths. With a wide choice of colours, textures, sizes and laying patterns, Andy Harragan & Sons creates block paved surfaces that complement both traditional and modern properties while delivering long-lasting kerb appeal.",
@@ -541,6 +554,133 @@ export const blockPavingServiceV2: ServicePageConfig = {
   contactCtaTitle: "Let’s Talk About Your Paving Project",
   contactCtaBody:
     "From block paving driveways and permeable paving to kerbs, edging and alternative surfacing options, we can help you choose the right solution for your property.",
+  contactCtaLabel: "Contact the team",
+  contactCtaHref: "/contact",
+};
+
+export const tarmacAndShingleServiceV2: ServicePageConfig = {
+  title: "15 Years In The Driveway Industry",
+  subtitle: "",
+  contactLabel: "Get a quote",
+  heroImage: [dg1, dg5, dg6],
+  trustedBy: [
+    { name: "Trusted Brand 1" },
+    { name: "Trusted Brand 2" },
+    { name: "Trusted Brand 3" },
+    { name: "Trusted Brand 4" },
+    { name: "Trusted Brand 5" },
+  ],
+  experienceSection: {
+    label: "Tarmac & Shingle",
+    title: "Our Tarmac & Shingle Driveway Services",
+    intro:
+      "Andy Harragan & Sons Ltd provide a complete range of tarmac and shingle driveway services across Essex and surrounding areas. Whether you need a cost-effective new driveway, a practical resurfacing solution, or a traditional gravel finish to suit your property, our experienced team delivers durable and attractive results.",
+    outro:
+      "A professionally installed tarmac or shingle driveway offers lasting performance, reliable drainage options and strong kerb appeal. Choosing Andy Harragan & Sons Ltd means investing in a driveway solution that is practical, well-finished and built to stand up to daily use.",
+    services: [
+      "Tarmac Driveways",
+      "Tar & Shingle Driveways",
+      "Shingle Driveways",
+      "Driveway Resurfacing",
+      "Private Roads & Lanes",
+      "Paths & Walkways",
+      "Kerbs & Edging",
+      "Driveway Repairs",
+      "Surface Preparation & Groundworks",
+    ],
+    experienceText:
+      "With decades of hands-on experience, our team delivers dependable workmanship and high standards across all types of tarmac and shingle driveway installations.",
+    qualityText:
+      "We use proven installation methods, careful groundwork preparation and trusted materials to ensure every surface is durable, practical and finished to a professional standard.",
+    serviceBlockText:
+      "From initial advice and quotations through to completion, we provide honest guidance, reliable service and a smooth customer experience from start to finish.",
+  },
+  section1Title: "Introducing Tarmac & Shingle Driveways",
+  section1Intro:
+    "Tarmac and shingle are practical, cost-effective driveway solutions that offer durability, versatility and strong visual appeal. Whether you want the clean, smooth finish of tarmac or the more traditional character of shingle, Andy Harragan & Sons can create a surface that complements your property and performs for years to come.",
+  section1Cards: [
+    {
+      title: "Tarmac Driveways",
+      image: dg6,
+      icon: ShieldCheck,
+      body: "Tarmac driveways are a durable, low-maintenance and cost-effective solution for domestic and commercial properties. Their smooth, hard-wearing finish makes them ideal for everyday use, while offering a neat and professional appearance.",
+    },
+    {
+      title: "Tar & Shingle Surfacing",
+      image: dg5,
+      icon: Grip,
+      body: "Tar and shingle surfacing combines a solid base with a decorative stone finish to create a practical surface with a more traditional look. It is a popular option for driveways, private roads and larger access areas where durability and value are important.",
+    },
+    {
+      title: "Low Maintenance & Practical",
+      image: dg1,
+      icon: Droplets,
+      body: "Both tarmac and shingle driveways are designed to be practical and easy to maintain. With the right installation and occasional upkeep, they provide reliable long-term performance and a cost-effective surface for everyday use.",
+    },
+    {
+      title: "Professional Installation",
+      image: altDriveways,
+      icon: HardHat,
+      body: "Andy Harragan & Sons installs tarmac and shingle driveways with careful preparation, proper sub-base construction and attention to detail. Every project is built for strength, durability and a clean finished appearance.",
+    },
+  ],
+  section1CtaLabel: "Get a quote",
+  section1CtaHref: "/contact",
+  section2Title: "Our Tarmac & Shingle Services",
+  section2Cards: [
+    {
+      title: "Tarmac Driveways",
+      body: "A tarmac driveway offers a smart, durable and cost-effective surface for homes and commercial properties. It provides a clean finish, excellent longevity and a practical solution for high-use areas.",
+      ctaLabel: "Discuss your driveway",
+      ctaHref: "/contact",
+      image: dg6,
+    },
+    {
+      title: "Shingle Driveways",
+      body: "Shingle driveways create a more traditional and decorative appearance while remaining practical and versatile. Available in a range of stone sizes and colours, they are ideal for rural, period and larger properties.",
+      ctaLabel: "Explore shingle options",
+      ctaHref: "/contact",
+      image: dg5,
+    },
+    {
+      title: "Tar & Shingle Surfaces",
+      body: "Tar and shingle is a dependable solution for driveways, lanes and access roads, combining durability with a textured stone finish. It is a strong option where you want a practical surface with added character.",
+      ctaLabel: "Plan your project",
+      ctaHref: "/contact",
+      image: dg1,
+    },
+    {
+      title: "Repairs & Resurfacing",
+      body: "We also carry out driveway resurfacing, repairs and replacement work for worn or damaged tarmac and shingle surfaces. This helps restore appearance, improve function and extend the usable life of your driveway.",
+      ctaLabel: "Discuss resurfacing",
+      ctaHref: "/contact",
+      image: altDriveways,
+    },
+  ],
+  testimonials: [
+    {
+      name: "Peter H.",
+      role: "Homeowner",
+      quote:
+        "The new tarmac driveway looks excellent and has completely improved the front of our property. Great team and very professional throughout.",
+    },
+    {
+      name: "Linda S.",
+      role: "Residential Client",
+      quote:
+        "We chose a shingle finish and are really pleased with the result. The team were helpful, tidy and clearly knew exactly what they were doing.",
+    },
+    {
+      name: "Mark T.",
+      role: "Property Owner",
+      quote:
+        "Reliable service from start to finish. The driveway was completed on time and the finish is exactly what we wanted.",
+    },
+  ],
+  galleryImages: [dg1, dg2, dg3, dg4, dg5, dg6],
+  contactCtaTitle: "Let’s Talk About Your Tarmac or Shingle Project",
+  contactCtaBody:
+    "From new tarmac driveways and tar & shingle surfaces to resurfacing and repairs, we can help you choose the right solution for your property.",
   contactCtaLabel: "Contact the team",
   contactCtaHref: "/contact",
 };

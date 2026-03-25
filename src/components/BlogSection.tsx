@@ -11,7 +11,7 @@ const BlogSection = () => {
             Blog
           </p>
 
-          <h2 className="mx-auto mt-3 max-w-3xl text-3xl font-black uppercase tracking-tight text-black md:text-5xl">
+          <h2 className="mt-3 text-3xl font-semibold uppercase tracking-tight text-black md:text-5xl">
             Driveway & Landscaping Chronicles
           </h2>
 

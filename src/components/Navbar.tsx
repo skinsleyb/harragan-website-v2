@@ -123,21 +123,12 @@ const Navbar = () => {
             Blog
           </Link>
 
-          {isHome ? (
-            <a
-              href="#contact"
-              className="text-primary-foreground/90 hover:text-primary-foreground text-xs font-semibold uppercase tracking-wider transition-colors"
-            >
-              Contact
-            </a>
-          ) : (
-            <Link
-              to="/contact"
-              className="text-primary-foreground/90 hover:text-primary-foreground text-xs font-semibold uppercase tracking-wider transition-colors"
-            >
-              Contact
-            </Link>
-          )}
+          <Link
+            to="/contact"
+            className="text-primary-foreground/90 hover:text-primary-foreground text-xs font-semibold uppercase tracking-wider transition-colors"
+          >
+            Contact
+          </Link>
         </div>
 
         <div className="hidden lg:flex items-center gap-4">
