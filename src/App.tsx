@@ -9,6 +9,7 @@ import ResinWork from "./pages/ResinWork.tsx";
 import BlockPaving from "./pages/BlockPaving.tsx";
 import Driveways from "./pages/Driveways.tsx";
 import TarmacShingle from "./pages/TarmacShingle.tsx";
+import StoneCarpets from "./pages/StoneCarpets.tsx";
 import Contact from "./pages/Contact.tsx";
 import Blog from "./pages/Blog.tsx";
 import BlogPost from "./pages/BlogPost.tsx";
@@ -29,6 +30,7 @@ const App = () => (
           <Route path="/services/block-paving" element={<BlockPaving />} />
           <Route path="/services/driveways" element={<Driveways />} />
           <Route path="/services/tarmac-shingle" element={<TarmacShingle />} />
+          <Route path="/services/stone-carpets" element={<StoneCarpets />} />
           <Route path="/contact" element={<Contact />} />
           <Route path="/blog" element={<Blog />} />
           <Route path="/blog/:slug" element={<BlogPost />} />

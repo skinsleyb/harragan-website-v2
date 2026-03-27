@@ -1,12 +1,14 @@
 import { Phone, Menu, X, ChevronDown } from "lucide-react";
 import { useState, useEffect, useRef } from "react";
 import { Link, useLocation } from "react-router-dom";
+import { motion, AnimatePresence } from "framer-motion";
 
 const serviceLinks = [
   { label: "Resin Work", to: "/services/resin-work" },
   { label: "Block Paving", to: "/services/block-paving" },
   { label: "Driveways", to: "/services/driveways" },
   { label: "Tarmac / Shingle", to: "/services/tarmac-shingle" },
+  { label: "Stone Carpets", to: "/services/stone-carpets" },
 ];
 
 const Navbar = () => {
@@ -46,7 +48,7 @@ const Navbar = () => {
 
   return (
     <nav
-      className={`absolute top-0 left-0 right-0 z-50 transition-all duration-300 ${
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
         showTransparent
           ? "bg-transparent"
           : "bg-primary/95 backdrop-blur-sm shadow-lg"
@@ -123,145 +125,129 @@ const Navbar = () => {
 
         <div className="hidden lg:flex items-center gap-4">
           <a
-            href="tel:+441245000000"
-            className="flex items-center gap-2 text-primary-foreground text-sm font-bold"
+            href="tel:+441245768150"
+            className="flex items-center gap-2 text-primary-foreground text-sm font-bold tracking-wide transition-colors hover:text-accent"
           >
-            <Phone size={14} /> 01245 768 150
+            <Phone size={14} className="text-accent" /> 01245 768 150
           </a>
-          {isHome ? (
-            <a
-              href="#contact"
-              className="bg-accent hover:bg-accent/90 text-accent-foreground font-bold px-5 py-2 rounded text-xs uppercase tracking-wider transition-colors"
-            >
-              Get a Quote
-            </a>
-          ) : (
-            <Link
-              to="/contact"
-              className="bg-accent hover:bg-accent/90 text-accent-foreground font-bold px-5 py-2 rounded text-xs uppercase tracking-wider transition-colors"
-            >
-              Get a Quote
-            </Link>
-          )}
+          <Link
+            to="/contact"
+            className="bg-accent hover:bg-accent/90 text-accent-foreground font-bold px-5 py-2.5 rounded-md text-xs uppercase tracking-wider transition-all transform hover:scale-[1.02] active:scale-95 shadow-md flex items-center justify-center"
+          >
+            Get a Quote
+          </Link>
         </div>
 
         <button
           onClick={() => setMobileOpen(!mobileOpen)}
-          className="lg:hidden text-primary-foreground"
+          className="lg:hidden text-primary-foreground p-2 -mr-2 flex items-center justify-center hover:bg-primary-foreground/10 rounded-full transition-colors"
           aria-label="Toggle menu"
         >
-          {mobileOpen ? <X size={22} /> : <Menu size={22} />}
+          {mobileOpen ? <X size={26} /> : <Menu size={26} />}
         </button>
       </div>
 
-      {mobileOpen && (
-        <div className="lg:hidden bg-primary border-t border-primary-foreground/10 px-4 pb-6">
-          <Link
-            to="/"
-            onClick={() => setMobileOpen(false)}
-            className="block py-2.5 text-primary-foreground/90 hover:text-primary-foreground font-semibold uppercase tracking-wide text-sm"
+      <AnimatePresence>
+        {mobileOpen && (
+          <motion.div
+            initial={{ opacity: 0, height: 0 }}
+            animate={{ opacity: 1, height: "auto" }}
+            exit={{ opacity: 0, height: 0 }}
+            transition={{ duration: 0.3, ease: "easeInOut" }}
+            className="lg:hidden bg-surface-dark border-t border-border/10 overflow-hidden"
           >
-            Home
-          </Link>
+            <div className="px-5 py-6 space-y-2">
+              <Link
+                to="/"
+                onClick={() => setMobileOpen(false)}
+                className="block py-3 text-primary-foreground/90 hover:text-accent font-semibold uppercase tracking-wide text-[15px] transition-colors"
+              >
+                Home
+              </Link>
 
-          <button
-            onClick={() => setMobileServicesOpen(!mobileServicesOpen)}
-            className="w-full flex items-center justify-between py-2.5 text-primary-foreground/90 hover:text-primary-foreground font-semibold uppercase tracking-wide text-sm"
-          >
-            Services
-            <ChevronDown
-              size={14}
-              className={`transition-transform ${mobileServicesOpen ? "rotate-180" : ""}`}
-            />
-          </button>
+              <button
+                onClick={() => setMobileServicesOpen(!mobileServicesOpen)}
+                className="w-full flex items-center justify-between py-3 text-primary-foreground/90 hover:text-accent font-semibold uppercase tracking-wide text-[15px] transition-colors"
+              >
+                Services
+                <ChevronDown
+                  size={16}
+                  className={`transition-transform duration-300 ${mobileServicesOpen ? "rotate-180" : ""}`}
+                />
+              </button>
 
-          {mobileServicesOpen && (
-            <div className="pl-4 border-l border-primary-foreground/10 ml-2 mb-2">
-              {isHome ? (
+              <AnimatePresence>
+                {mobileServicesOpen && (
+                  <motion.div
+                    initial={{ opacity: 0, height: 0 }}
+                    animate={{ opacity: 1, height: "auto" }}
+                    exit={{ opacity: 0, height: 0 }}
+                    className="pl-4 border-l-2 border-accent/30 ml-2 overflow-hidden"
+                  >
+                    <div className="py-2 space-y-1">
+                      <Link
+                        to="/services"
+                        onClick={() => {
+                          setMobileOpen(false);
+                          setMobileServicesOpen(false);
+                        }}
+                        className="block py-2.5 text-primary-foreground/70 hover:text-accent text-[15px] transition-colors"
+                      >
+                        All Services
+                      </Link>
+                      {serviceLinks.map((s) => (
+                        <Link
+                          key={s.to}
+                          to={s.to}
+                          onClick={() => {
+                            setMobileOpen(false);
+                            setMobileServicesOpen(false);
+                          }}
+                          className="block py-2.5 text-primary-foreground/70 hover:text-accent text-[15px] transition-colors"
+                        >
+                          {s.label}
+                        </Link>
+                      ))}
+                    </div>
+                  </motion.div>
+                )}
+              </AnimatePresence>
+
+              <Link
+                to="/blog"
+                onClick={() => setMobileOpen(false)}
+                className="block py-3 text-primary-foreground/90 hover:text-accent font-semibold uppercase tracking-wide text-[15px] transition-colors"
+              >
+                Blog
+              </Link>
+              
+              <Link
+                to="/contact"
+                onClick={() => setMobileOpen(false)}
+                className="block py-3 text-primary-foreground/90 hover:text-accent font-semibold uppercase tracking-wide text-[15px] transition-colors"
+              >
+                Contact
+              </Link>
+              
+              <div className="pt-4 mt-2 border-t border-border/10">
                 <a
-                  href="#services"
-                  onClick={() => {
-                    setMobileOpen(false);
-                    setMobileServicesOpen(false);
-                  }}
-                  className="block py-2 text-primary-foreground/60 hover:text-primary-foreground text-sm"
+                  href="tel:+441245768150"
+                  className="flex items-center justify-center gap-2 text-primary-foreground text-sm font-bold tracking-wide transition-colors hover:text-accent py-3 mb-2"
                 >
-                  All Services
+                  <Phone size={16} className="text-accent" /> 01245 768 150
                 </a>
-              ) : (
                 <Link
-                  to="/services"
-                  onClick={() => {
-                    setMobileOpen(false);
-                    setMobileServicesOpen(false);
-                  }}
-                  className="block py-2 text-primary-foreground/60 hover:text-primary-foreground text-sm"
+                  to="/contact"
+                  onClick={() => setMobileOpen(false)}
+                  className="w-full flex items-center justify-center gap-2 bg-accent hover:bg-accent/90 text-accent-foreground px-6 py-3.5 rounded-md font-bold text-sm uppercase tracking-wider shadow-lg transition-transform active:scale-95"
                 >
-                  All Services
+                  Get a Quote
                 </Link>
-              )}
-
-              {serviceLinks.map((s) => (
-                <Link
-                  key={s.to}
-                  to={s.to}
-                  onClick={() => {
-                    setMobileOpen(false);
-                    setMobileServicesOpen(false);
-                  }}
-                  className="block py-2 text-primary-foreground/60 hover:text-primary-foreground text-sm"
-                >
-                  {s.label}
-                </Link>
-              ))}
+              </div>
             </div>
-          )}
-
-          <Link
-            to="/blog"
-            onClick={() => setMobileOpen(false)}
-            className="block py-2.5 text-primary-foreground/90 hover:text-primary-foreground font-semibold uppercase tracking-wide text-sm"
-          >
-            Blog
-          </Link>
-
-          {isHome ? (
-            <a
-              href="#contact"
-              onClick={() => setMobileOpen(false)}
-              className="block py-2.5 text-primary-foreground/90 hover:text-primary-foreground font-semibold uppercase tracking-wide text-sm"
-            >
-              Contact
-            </a>
-          ) : (
-            <Link
-              to="/contact"
-              onClick={() => setMobileOpen(false)}
-              className="block py-2.5 text-primary-foreground/90 hover:text-primary-foreground font-semibold uppercase tracking-wide text-sm"
-            >
-              Contact
-            </Link>
-          )}
-
-          {isHome ? (
-            <a
-              href="#contact"
-              onClick={() => setMobileOpen(false)}
-              className="mt-3 flex items-center justify-center gap-2 bg-accent text-accent-foreground px-5 py-2.5 rounded font-bold text-sm"
-            >
-              <Phone size={16} /> Get a Quote
-            </a>
-          ) : (
-            <Link
-              to="/contact"
-              onClick={() => setMobileOpen(false)}
-              className="mt-3 flex items-center justify-center gap-2 bg-accent text-accent-foreground px-5 py-2.5 rounded font-bold text-sm"
-            >
-              <Phone size={16} /> Get a Quote
-            </Link>
-          )}
-        </div>
-      )}
+          </motion.div>
+        )}
+      </AnimatePresence>
     </nav>
   );
 };

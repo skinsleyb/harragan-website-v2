@@ -113,6 +113,7 @@ export interface ServicePageConfig {
 
 interface Props {
   service: ServicePageConfig;
+  children?: React.ReactNode;
 }
 
 const scrollToFirstSection = () => {
@@ -122,7 +123,7 @@ const scrollToFirstSection = () => {
   el?.scrollIntoView({ behavior: "smooth", block: "start" });
 };
 
-const ServicePageTemplate = ({ service }: Props) => {
+const ServicePageTemplate = ({ service, children }: Props) => {
   const {
     title,
     subtitle,
@@ -251,6 +252,8 @@ const ServicePageTemplate = ({ service }: Props) => {
           );
         })}
       </div>
+
+      {children}
 
       <Testimonials />
 
@@ -681,6 +684,133 @@ export const tarmacAndShingleServiceV2: ServicePageConfig = {
   contactCtaTitle: "Let’s Talk About Your Tarmac or Shingle Project",
   contactCtaBody:
     "From new tarmac driveways and tar & shingle surfaces to resurfacing and repairs, we can help you choose the right solution for your property.",
+  contactCtaLabel: "Contact the team",
+  contactCtaHref: "/contact",
+};
+
+export const stoneCarpetsServiceV2: ServicePageConfig = {
+  title: "15 Years In The Resin Industry",
+  subtitle: "",
+  contactLabel: "Get a quote",
+  heroImage: [section1Img2, dg1, dg5],
+  trustedBy: [
+    { name: "Trusted Brand 1" },
+    { name: "Trusted Brand 2" },
+    { name: "Trusted Brand 3" },
+    { name: "Trusted Brand 4" },
+    { name: "Trusted Brand 5" },
+  ],
+  experienceSection: {
+    label: "Stone Carpets",
+    title: "Seamless Indoor Stone Surfaces",
+    intro:
+      "Andy Harragan & Sons Ltd introduce Stone Carpets, a revolutionary seamless flooring system. Stone Carpets provide a hard-wearing, UV-resistant indoor surface that brings the beauty of natural stone into your property with unmatched durability and style.",
+    outro:
+      "Walkable within just 45 minutes of application, Stone Carpets offer incredible convenience alongside premium results. With endless possibilities, these resin bound surfaces know no bounds, making them perfectly suited for commercial spaces, modern homes, and everything in between.",
+    services: [
+      "Commercial Properties",
+      "Gyms & Spas",
+      "Bathrooms & Wet Rooms",
+      "Living Rooms",
+      "Conservatories",
+      "Showrooms & Exhibitions",
+      "Game Rooms",
+      "Kitchens",
+      "Porches & Hallways",
+    ],
+    experienceText:
+      "With 15 years in the resin industry, our team expertly installs indoor stone carpets to the highest standard. We ensure a flawless, seamless finish that enhances any interior space.",
+    qualityText:
+      "We strictly source premium resin and aggregates, ensuring your indoor stone carpet is UV-resistant, exceptionally hard-wearing, and perfectly level.",
+    serviceBlockText:
+      "We handle every aspect of the project, from surface preparation right through to final sealing, offering honest guidance and a hassle-free experience perfectly tailored to your space.",
+  },
+  section1Title: "Introducing Stone Carpets",
+  section1Intro:
+    "Stone carpets bring the rugged natural beauty of resin-bound stone indoors, offering a completely seamless, high-performance alternative to traditional flooring solutions.",
+  section1Cards: [
+    {
+      title: "Completely Seamless",
+      image: section1Img,
+      icon: LayoutGrid,
+      body: "Say goodbye to grout lines and joints. A stone carpet provides a single, unbroken aesthetic across any room size, delivering a clean, modern look that's incredibly easy to keep pristine.",
+    },
+    {
+      title: "Hard-Wearing & Durable",
+      image: section1Img2,
+      icon: ShieldCheck,
+      body: "Designed to withstand heavy foot traffic, dropped items, and daily wear and tear. Stone Carpets are an ideal solution for both demanding commercial environments and busy family homes.",
+    },
+    {
+      title: "UV-Resistant Finish",
+      image: section1Img4,
+      icon: Droplets,
+      body: "Thanks to premium UV-stable clear resins, our stone carpets will not yellow or degrade over time when exposed to sunlight, maintaining their original vibrant colour for years, even in sunlit conservatories.",
+    },
+    {
+      title: "Walkable in 45 Minutes",
+      image: dg6,
+      icon: HardHat,
+      body: "Our advanced rapid-cure resin allows the floor to be fully walkable just 45 minutes after application, drastically reducing installation downtime compared to traditional flooring methods.",
+    },
+  ],
+  section1CtaLabel: "Discuss your project",
+  section1CtaHref: "/contact",
+  section2Title: "Applications and Versatility",
+  section2Cards: [
+    {
+      title: "Living Spaces & Kitchens",
+      body: "Transform your home with a stunning, practical surface that effortlessly connects open-plan living areas. It's warm, comfortable underfoot, and extremely easy to maintain.",
+      ctaLabel: "Transform your home",
+      ctaHref: "/contact",
+      image: dg2,
+    },
+    {
+      title: "Bathrooms & Wet Rooms",
+      body: "The seamless nature of stone carpets makes them an excellent, highly durable choice for wet environments, offering natural slip resistance when correctly sealed.",
+      ctaLabel: "Plan your bathroom",
+      ctaHref: "/contact",
+      image: section1Img3,
+    },
+    {
+      title: "Commercial & Showrooms",
+      body: "Make a striking impression on clients with a floor that embodies luxury while enduring the rigorous demands of commercial foot traffic.",
+      ctaLabel: "Discuss your showroom",
+      ctaHref: "/contact",
+      image: section1Img,
+    },
+    {
+      title: "Gyms, Spas & Game Rooms",
+      body: "Stone Carpets provide an incredibly resilient, easy-to-clean base layer that handles heavy equipment and high activity without showing signs of wear.",
+      ctaLabel: "Enquire today",
+      ctaHref: "/contact",
+      image: dg6,
+    },
+  ],
+  testimonials: [
+    {
+      name: "Olivia M.",
+      role: "Homeowner",
+      quote:
+        "The stone carpet in our new extension completely changed the feel of the room. It flows seamlessly into the kitchen and looks incredible.",
+    },
+    {
+      name: "Marcus T.",
+      role: "Commercial Client",
+      quote:
+        "We needed a hard-wearing showroom floor that set us apart from competitors. The team managed to install it with minimal disruption.",
+    },
+    {
+      name: "Sarah V.",
+      role: "Residential Client",
+      quote:
+        "Being able to walk on it within an hour was a game changer for us. The UV resistance is great for our south-facing conservatory.",
+    },
+  ],
+  galleryImages: [dg1, dg2, dg3, dg4, dg5, dg6],
+  contactCtaTitle: "Ready for a Seamless Floor?",
+  contactCtaBody:
+    "Whether it's for a residential kitchen, a pristine bathroom, or a high-end commercial showroom, we have the perfect stone carpet solution.",
   contactCtaLabel: "Contact the team",
   contactCtaHref: "/contact",
 };
