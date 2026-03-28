@@ -2,138 +2,131 @@ import { ArrowRight, Mail, Phone } from "lucide-react";
 
 const ContactSection = () => {
   return (
-    <section id="cta" className="bg-[#f6f5f5] py-16 md:py-24">
+    <section id="cta" className="bg-zinc-950 text-white py-24 md:py-32">
       <div className="container mx-auto px-4">
         <div className="mx-auto max-w-3xl text-center">
-          <p className="text-xs font-bold uppercase tracking-[0.22em] text-black/45">
+          <p className="text-[11px] font-bold uppercase tracking-[0.22em] text-white/50">
             Contact
           </p>
 
-          <h2 className="mt-3 text-3xl font-semibold uppercase tracking-tight text-black md:text-5xl">
+          <h2 className="mt-4 text-4xl font-semibold uppercase tracking-tight text-white md:text-5xl">
             Get In Touch With Us
           </h2>
 
-          <p className="mx-auto mt-5 max-w-2xl text-base leading-relaxed text-black/65">
-            Fill in the form below and our team will get back to you as soon as
-            possible. You can also contact us directly by phone or email.
+          <p className="mx-auto mt-6 max-w-2xl text-base leading-relaxed text-white/70">
+            Direct access to our senior team. Fill in your details below and we typically respond within 2 hours.
           </p>
         </div>
 
-        <div className="mx-auto mt-10 grid max-w-6xl gap-8 lg:grid-cols-[1.2fr_auto_0.8fr] lg:items-start">
+        <div className="mx-auto mt-16 grid max-w-5xl gap-16 lg:grid-cols-[1fr_auto_0.8fr] lg:gap-24 lg:items-start">
           {/* Form */}
-          <div className="rounded-2xl bg-white p-6 shadow-sm md:p-8">
-            <form className="space-y-5">
-              <div>
-                <label
-                  htmlFor="fullName"
-                  className="mb-2 block text-xs font-bold uppercase tracking-[0.14em] text-black/55"
-                >
-                  Full Name
-                </label>
+          <div className="w-full">
+            <form className="space-y-10 group/form">
+              <div className="relative">
                 <input
                   id="fullName"
                   name="fullName"
                   type="text"
                   placeholder="Your full name"
-                  className="w-full rounded-full border border-black/10 bg-white px-5 py-3 text-sm text-black outline-none transition placeholder:text-black/35 focus:border-black/30"
+                  className="peer w-full border-b border-white/20 bg-transparent py-4 text-base text-white outline-none transition-colors placeholder:text-transparent focus:border-white"
                 />
+                <label
+                  htmlFor="fullName"
+                  className="absolute left-0 top-4 -translate-y-8 text-[11px] font-bold uppercase tracking-[0.18em] text-white/60 transition-all peer-placeholder-shown:translate-y-0 peer-placeholder-shown:text-base peer-placeholder-shown:normal-case peer-placeholder-shown:tracking-normal peer-focus:-translate-y-8 peer-focus:text-[11px] peer-focus:font-bold peer-focus:uppercase peer-focus:tracking-[0.18em] peer-focus:text-white"
+                >
+                  Full Name
+                </label>
               </div>
 
-              <div>
-                <label
-                  htmlFor="email"
-                  className="mb-2 block text-xs font-bold uppercase tracking-[0.14em] text-black/55"
-                >
-                  Email
-                </label>
+              <div className="relative mt-12">
                 <input
                   id="email"
                   name="email"
                   type="email"
-                  placeholder="Your email address"
-                  className="w-full rounded-full border border-black/10 bg-white px-5 py-3 text-sm text-black outline-none transition placeholder:text-black/35 focus:border-black/30"
+                  placeholder="you@example.com"
+                  className="peer w-full border-b border-white/20 bg-transparent py-4 text-base text-white outline-none transition-colors placeholder:text-transparent focus:border-white"
                 />
+                <label
+                  htmlFor="email"
+                  className="absolute left-0 top-4 -translate-y-8 text-[11px] font-bold uppercase tracking-[0.18em] text-white/60 transition-all peer-placeholder-shown:translate-y-0 peer-placeholder-shown:text-base peer-placeholder-shown:normal-case peer-placeholder-shown:tracking-normal peer-focus:-translate-y-8 peer-focus:text-[11px] peer-focus:font-bold peer-focus:uppercase peer-focus:tracking-[0.18em] peer-focus:text-white"
+                >
+                  Email Address
+                </label>
               </div>
 
-              <div>
-                <label
-                  htmlFor="phone"
-                  className="mb-2 block text-xs font-bold uppercase tracking-[0.14em] text-black/55"
-                >
-                  Phone Number
-                </label>
+              <div className="relative mt-12">
                 <input
                   id="phone"
                   name="phone"
                   type="tel"
                   placeholder="Your phone number"
-                  className="w-full rounded-full border border-black/10 bg-white px-5 py-3 text-sm text-black outline-none transition placeholder:text-black/35 focus:border-black/30"
+                  className="peer w-full border-b border-white/20 bg-transparent py-4 text-base text-white outline-none transition-colors placeholder:text-transparent focus:border-white"
                 />
+                <label
+                  htmlFor="phone"
+                  className="absolute left-0 top-4 -translate-y-8 text-[11px] font-bold uppercase tracking-[0.18em] text-white/60 transition-all peer-placeholder-shown:translate-y-0 peer-placeholder-shown:text-base peer-placeholder-shown:normal-case peer-placeholder-shown:tracking-normal peer-focus:-translate-y-8 peer-focus:text-[11px] peer-focus:font-bold peer-focus:uppercase peer-focus:tracking-[0.18em] peer-focus:text-white"
+                >
+                  Phone Number
+                </label>
               </div>
 
-              <button
-                type="submit"
-                className="inline-flex items-center gap-3 rounded-full bg-black px-6 py-3 text-sm font-semibold text-white transition hover:translate-y-[-1px] hover:bg-black/90"
-              >
-                Get a quote
-                <ArrowRight className="h-4 w-4" />
-              </button>
+              <div className="pt-8">
+                <button
+                  type="submit"
+                  className="inline-flex w-full sm:w-auto items-center justify-center gap-4 bg-white px-8 py-4 text-[13px] font-bold uppercase tracking-[0.18em] text-zinc-950 transition hover:bg-white/80"
+                >
+                  Get a quote
+                  <ArrowRight className="h-4 w-4" />
+                </button>
+                <div className="mt-6 flex items-center gap-3 text-white/40">
+                  <div className="h-[1px] flex-1 bg-white/10"></div>
+                  <p className="text-[11px] font-medium tracking-wide uppercase">
+                     * No obligation quote
+                  </p>
+                  <div className="h-[1px] flex-1 bg-white/10"></div>
+                </div>
+              </div>
             </form>
           </div>
 
           {/* Divider */}
-          <div className="hidden h-full w-px self-stretch bg-black/10 lg:block" />
+          <div className="hidden lg:block h-full w-[1px] self-stretch bg-white/10" />
 
           {/* Contact details */}
-          <div className="flex h-full flex-col justify-center lg:pl-2">
-            <p className="text-xs font-bold uppercase tracking-[0.22em] text-black/45">
+          <div className="flex h-full flex-col justify-start lg:pt-2">
+            <h3 className="text-[11px] font-bold uppercase tracking-[0.22em] text-white/50 mb-10">
               Direct Contact
-            </p>
-
-            <h3 className="mt-3 text-2xl font-semibold uppercase tracking-tight text-black">
-              Speak To Our Team
             </h3>
 
-            <p className="mt-4 text-base leading-relaxed text-black/65">
-              Prefer to contact us directly? Use the details below and we’ll be
-              happy to help.
-            </p>
-
-            <div className="mt-8 space-y-5">
+            <div className="space-y-12">
               <a
                 href="mailto:aharraganandson@aol.com"
-                className="flex items-center gap-4 text-black transition hover:opacity-75"
+                className="group flex flex-col gap-3 transition"
               >
-                <span className="flex h-12 w-12 items-center justify-center rounded-2xl border border-black bg-white">
-                  <Mail className="h-5 w-5" />
-                </span>
-
-                <div>
-                  <p className="text-xs font-bold uppercase tracking-[0.14em] text-black/55">
+                <div className="flex items-center gap-4">
+                  <Mail className="h-4 w-4 text-white/50 group-hover:text-white transition-colors" />
+                  <p className="text-[11px] font-bold uppercase tracking-[0.18em] text-white/50 group-hover:text-white/70 transition-colors">
                     Email
                   </p>
-                  <p className="text-sm font-medium normal-case">
-                    aharraganandson@aol.com
-                  </p>
                 </div>
+                <p className="text-xl font-medium tracking-tight text-white border-b border-transparent group-hover:border-white/30 self-start transition-colors">
+                  aharraganandson@aol.com
+                </p>
               </a>
 
               <a
                 href="tel:01245768150"
-                className="flex items-center gap-4 text-black transition hover:opacity-75"
+                className="group flex flex-col gap-3 transition"
               >
-                <span className="flex h-12 w-12 items-center justify-center rounded-2xl border border-black bg-white">
-                  <Phone className="h-5 w-5" />
-                </span>
-
-                <div>
-                  <p className="text-xs font-bold uppercase tracking-[0.14em] text-black/55">
-                    Phone
-                  </p>
-                  <p className="text-sm font-medium normal-case">
-                    01245 768 150
+                <div className="flex items-center gap-4">
+                  <Phone className="h-4 w-4 text-white/50 group-hover:text-white transition-colors" />
+                  <p className="text-[11px] font-bold uppercase tracking-[0.18em] text-white/50 group-hover:text-white/70 transition-colors">
+                    Direct Line
                   </p>
                 </div>
+                <p className="text-xl font-medium tracking-tight text-white border-b border-transparent group-hover:border-white/30 self-start transition-colors">
+                  01245 768 150
+                </p>
               </a>
             </div>
           </div>

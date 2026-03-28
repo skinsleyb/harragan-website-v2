@@ -10,7 +10,6 @@ import {
 } from "lucide-react";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
-import { SplitSection } from "./SplitSection";
 import heroImg from "@/assets/nice-drive.jpg";
 import section1Img from "@/assets/dorset-resin.jpg";
 import section1Img2 from "@/assets/resin-nice-2.jpg";
@@ -181,77 +180,109 @@ const ServicePageTemplate = ({ service, children }: Props) => {
         serviceBlockText={experienceSection.serviceBlockText}
       />
 
-      <section id="section-1" className="bg-[#f6f5f5] py-16 md:py-24">
-        <div className="container mx-auto px-2">
-          <div className="mx-auto max-w-3xl text-center">
-            <p className="text-xs font-bold uppercase tracking-[0.22em] text-black/45">
-              Section 1
-            </p>
+      <section id="section-1" className="bg-zinc-50 py-24 md:py-32">
+        <div className="container mx-auto px-4">
+          <div className="grid lg:grid-cols-2 gap-16 lg:gap-24 items-start">
+            {/* Sticky intro */}
+            <div className="lg:sticky lg:top-32 max-w-xl">
+              <p className="text-[11px] font-bold uppercase tracking-[0.22em] text-black/45">
+                Overview
+              </p>
+              <h2 className="mt-4 text-3xl font-semibold uppercase tracking-tight text-black md:text-5xl">
+                {section1Title}
+              </h2>
+              {section1Intro && (
+                <p className="mt-6 text-lg leading-relaxed text-black/70">
+                  {section1Intro}
+                </p>
+              )}
+              <div className="mt-10">
+                <a
+                  href={section1CtaHref}
+                  className="inline-flex items-center gap-4 border border-black px-8 py-4 text-[13px] font-bold uppercase tracking-[0.18em] text-black transition hover:bg-black hover:text-white"
+                >
+                  {section1CtaLabel}
+                  <ArrowRight className="h-4 w-4" />
+                </a>
+              </div>
+            </div>
 
-            <h2 className="mt-3 text-3xl font-semibold uppercase tracking-tight text-black md:text-5xl">
-              {section1Title}
-            </h2>
-          </div>
-
-          <div className="mx-auto mt-10 max-w-5xl">
-            <div className="grid justify-center gap-6 md:grid-cols-2">
-              {section1Cards.map((card) => {
+            {/* Feature Cards Grid (Asymmetrical) */}
+            <div className="grid sm:grid-cols-2 gap-8 lg:mt-24">
+              {section1Cards.map((card, i) => {
                 const Icon = card.icon || CheckCircle2;
-
                 return (
                   <div
                     key={card.title}
-                    className="overflow-hidden rounded-xl bg-white/75 text-black"
+                    className={`flex flex-col bg-white border border-black/5 p-8 transition-colors hover:border-black/20 ${
+                      i % 2 !== 0 ? "sm:mt-16" : ""
+                    }`}
                   >
-                    <div className="p-9">
-                      <div className="flex items-start justify-between gap-4">
-                        <h3 className="text-2xl font-semibold uppercase leading-tight tracking-tight">
-                          {card.title}
-                        </h3>
-
-                        <Icon className="h-10 w-10 flex-shrink-0 text-black" />
-                      </div>
-
-                      <p className="mt-4 text-lg leading-relaxed text-black/70">
-                        {card.body}
-                      </p>
-                    </div>
+                    <Icon className="h-8 w-8 text-black mb-6" strokeWidth={1.5} />
+                    <h3 className="text-xl font-bold uppercase leading-tight tracking-tight text-black mb-4">
+                      {card.title}
+                    </h3>
+                    <p className="text-sm leading-relaxed text-black/65">
+                      {card.body}
+                    </p>
                   </div>
                 );
               })}
-            </div>
-
-            <div className="mt-10 flex justify-center">
-              <a
-                href={section1CtaHref}
-                className="inline-flex items-center gap-3 rounded-full bg-black px-7 py-3 text-sm font-bold text-white transition hover:translate-y-[-1px] hover:bg-black/90"
-              >
-                {section1CtaLabel}
-                <ArrowRight className="h-4 w-4" />
-              </a>
             </div>
           </div>
         </div>
       </section>
 
-      <div className="mt-10 flex flex-col">
-        {splitCards.map((item, i) => {
-          if (!item) return null;
-
-          return (
-            <SplitSection
-              key={`${item.title}-${i}`}
-              title={item.title}
-              description={item.body}
-              buttonText={item.ctaLabel ?? "Learn more"}
-              buttonHref={item.ctaHref ?? "/contact"}
-              imageSrc={item.image}
-              imageAlt={item.title}
-              imagePosition={i % 2 === 0 ? "left" : "right"}
-            />
-          );
-        })}
-      </div>
+      {/* STICKY SCROLL SECTION 2 */}
+      {splitCards.length > 0 && splitCards[0] !== null && (
+        <section className="bg-white py-24 md:py-32 border-t border-black/5">
+          <div className="container mx-auto px-4">
+            <div className="mx-auto max-w-3xl text-center mb-16 md:mb-24">
+              <h2 className="text-3xl font-semibold uppercase tracking-tight text-black md:text-5xl">
+                {section2Title}
+              </h2>
+            </div>
+            
+            <div className="flex flex-col md:flex-row gap-16 lg:gap-24 relative w-full items-start">
+              {/* Sticky Content Side */}
+              <div className="w-full md:w-[45%] md:sticky md:top-32 flex flex-col gap-16 py-10">
+                {splitCards.filter(Boolean).map((item, i) => (
+                  <div key={i} className="flex flex-col">
+                    <span className="text-4xl font-light text-black/20 mb-4 tracking-tighter">0{i + 1}</span>
+                    <h3 className="text-2xl font-bold uppercase tracking-tight text-black mb-4 gap-2">
+                       {item.title}
+                    </h3>
+                    <p className="text-lg leading-relaxed text-black/70">
+                       {item.body}
+                    </p>
+                    <div className="mt-8">
+                      <a href={item.ctaHref} className="inline-flex items-center gap-3 font-bold uppercase tracking-[0.15em] text-[11px] group pb-2 border-b-2 border-transparent hover:border-black transition-all">
+                          {item.ctaLabel ?? "Learn more"}
+                          <ArrowRight className="h-3 w-3 group-hover:translate-x-1 transition-transform" />
+                      </a>
+                    </div>
+                  </div>
+                ))}
+              </div>
+              
+              {/* Scrolling Images Side */}
+              <div className="w-full md:w-[55%] flex flex-col gap-16 md:gap-32">
+                {splitCards.filter(Boolean).map((item, i) => (
+                  <div key={i} className="w-full aspect-[4/5] bg-zinc-100 relative overflow-hidden">
+                    {item.image ? (
+                       <img src={item.image} alt={item.title} className="absolute inset-0 w-full h-full object-cover" loading="lazy" />
+                    ) : (
+                       <div className="absolute inset-0 flex items-center justify-center text-black/20">
+                         No Image Provided
+                       </div>
+                    )}
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+        </section>
+      )}
 
       {children}
 

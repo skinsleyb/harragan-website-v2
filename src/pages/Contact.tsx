@@ -247,7 +247,7 @@ const Contact = () => {
                         Location
                       </p>
                       <p className="mt-1 text-sm font-medium normal-case">
-                        Chelmsford, Essex
+                        Chelmsford, Essex and Nationwide
                       </p>
                     </div>
                   </div>
