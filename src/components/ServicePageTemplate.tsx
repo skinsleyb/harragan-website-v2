@@ -198,7 +198,7 @@ const ServicePageTemplate = ({ service, children }: Props) => {
               )}
               <div className="mt-10">
                 <a
-                  href={section1CtaHref}
+                  href="#contact"
                   className="inline-flex items-center gap-4 border border-black px-8 py-4 text-[13px] font-bold uppercase tracking-[0.18em] text-black transition hover:bg-black hover:text-white"
                 >
                   {section1CtaLabel}
@@ -256,7 +256,7 @@ const ServicePageTemplate = ({ service, children }: Props) => {
                        {item.body}
                     </p>
                     <div className="mt-8">
-                      <a href={item.ctaHref} className="inline-flex items-center gap-3 font-bold uppercase tracking-[0.15em] text-[11px] group pb-2 border-b-2 border-transparent hover:border-black transition-all">
+                      <a href="#contact" className="inline-flex items-center gap-3 font-bold uppercase tracking-[0.15em] text-[11px] group pb-2 border-b-2 border-transparent hover:border-black transition-all">
                           {item.ctaLabel ?? "Learn more"}
                           <ArrowRight className="h-3 w-3 group-hover:translate-x-1 transition-transform" />
                       </a>
@@ -469,7 +469,7 @@ export const blockPavingServiceV2: ServicePageConfig = {
   title: "15 Years In The Driveway Industry",
   subtitle: "",
   contactLabel: "Get a quote",
-  heroImage: [blockp2, blockp3, blockp4],
+  heroImage: [blockp2],
   trustedBy: [
     { name: "Trusted Brand 1" },
     { name: "Trusted Brand 2" },
@@ -596,7 +596,7 @@ export const tarmacAndShingleServiceV2: ServicePageConfig = {
   title: "15 Years In The Driveway Industry",
   subtitle: "",
   contactLabel: "Get a quote",
-  heroImage: [dg1, dg5, dg6],
+  heroImage: [dg1],
   trustedBy: [
     { name: "Trusted Brand 1" },
     { name: "Trusted Brand 2" },
@@ -723,7 +723,7 @@ export const stoneCarpetsServiceV2: ServicePageConfig = {
   title: "15 Years In The Resin Industry",
   subtitle: "",
   contactLabel: "Get a quote",
-  heroImage: [section1Img2, dg1, dg5],
+  heroImage: [section1Img2],
   trustedBy: [
     { name: "Trusted Brand 1" },
     { name: "Trusted Brand 2" },

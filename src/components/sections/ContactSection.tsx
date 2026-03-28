@@ -2,7 +2,7 @@ import { ArrowRight, Mail, Phone } from "lucide-react";
 
 const ContactSection = () => {
   return (
-    <section id="cta" className="bg-zinc-950 text-white py-24 md:py-32">
+    <section id="contact" className="bg-zinc-950 text-white py-24 md:py-32">
       <div className="container mx-auto px-4">
         <div className="mx-auto max-w-3xl text-center">
           <p className="text-[11px] font-bold uppercase tracking-[0.22em] text-white/50">

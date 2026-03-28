@@ -57,7 +57,7 @@ const Navbar = () => {
       <div className="container mx-auto flex h-16 items-center justify-between px-4 sm:h-20">
         <Link
           to="/"
-          className="font-display text-sm sm:text-lg md:text-xl font-bold uppercase tracking-wider text-primary-foreground"
+          className="font-display text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold uppercase tracking-wider text-primary-foreground"
         >
           Andy Harragan & Sons LTD
         </Link>
