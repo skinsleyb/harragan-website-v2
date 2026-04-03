@@ -16,7 +16,14 @@ import section1Img2 from "@/assets/resin-nice-2.jpg";
 import section1Img3 from "@/assets/nice-drive.jpg";
 import section1Img4 from "@/assets/Resin.png";
 
+// Resin Service
+import resin1 from "@/assets/resin/resin-driveway-1.jpeg";
+import resin2 from "@/assets/resin/resin-driveway-2.jpg";
+import resin3 from "@/assets/resin/resin-3.jpeg";
+import resin4 from "@/assets/resin/resin-4.jpeg";
+
 // block paving
+import blockp1 from "@/assets/block-paving/block-paving-1.jpeg";
 import blockp2 from "@/assets/block-paving/nice-blocks-2.jpeg";
 import blockp3 from "@/assets/block-paving/nice-blocks-3.jpeg";
 import blockp4 from "@/assets/block-paving/nice-blocks-4.jpeg";
@@ -218,7 +225,10 @@ const ServicePageTemplate = ({ service, children }: Props) => {
                       i % 2 !== 0 ? "sm:mt-16" : ""
                     }`}
                   >
-                    <Icon className="h-8 w-8 text-black mb-6" strokeWidth={1.5} />
+                    <Icon
+                      className="h-8 w-8 text-black mb-6"
+                      strokeWidth={1.5}
+                    />
                     <h3 className="text-xl font-bold uppercase leading-tight tracking-tight text-black mb-4">
                       {card.title}
                     </h3>
@@ -242,39 +252,52 @@ const ServicePageTemplate = ({ service, children }: Props) => {
                 {section2Title}
               </h2>
             </div>
-            
+
             <div className="flex flex-col md:flex-row gap-16 lg:gap-24 relative w-full items-start">
               {/* Sticky Content Side */}
               <div className="w-full md:w-[45%] md:sticky md:top-32 flex flex-col gap-16 py-10">
                 {splitCards.filter(Boolean).map((item, i) => (
                   <div key={i} className="flex flex-col">
-                    <span className="text-4xl font-light text-black/20 mb-4 tracking-tighter">0{i + 1}</span>
+                    <span className="text-4xl font-light text-black/20 mb-4 tracking-tighter">
+                      0{i + 1}
+                    </span>
                     <h3 className="text-2xl font-bold uppercase tracking-tight text-black mb-4 gap-2">
-                       {item.title}
+                      {item.title}
                     </h3>
                     <p className="text-lg leading-relaxed text-black/70">
-                       {item.body}
+                      {item.body}
                     </p>
                     <div className="mt-8">
-                      <a href="#contact" className="inline-flex items-center gap-3 font-bold uppercase tracking-[0.15em] text-[11px] group pb-2 border-b-2 border-transparent hover:border-black transition-all">
-                          {item.ctaLabel ?? "Learn more"}
-                          <ArrowRight className="h-3 w-3 group-hover:translate-x-1 transition-transform" />
+                      <a
+                        href="#contact"
+                        className="inline-flex items-center gap-3 font-bold uppercase tracking-[0.15em] text-[11px] group pb-2 border-b-2 border-transparent hover:border-black transition-all"
+                      >
+                        {item.ctaLabel ?? "Learn more"}
+                        <ArrowRight className="h-3 w-3 group-hover:translate-x-1 transition-transform" />
                       </a>
                     </div>
                   </div>
                 ))}
               </div>
-              
+
               {/* Scrolling Images Side */}
               <div className="w-full md:w-[55%] flex flex-col gap-16 md:gap-32">
                 {splitCards.filter(Boolean).map((item, i) => (
-                  <div key={i} className="w-full aspect-[4/5] bg-zinc-100 relative overflow-hidden">
+                  <div
+                    key={i}
+                    className="w-full aspect-[4/5] bg-zinc-100 relative overflow-hidden"
+                  >
                     {item.image ? (
-                       <img src={item.image} alt={item.title} className="absolute inset-0 w-full h-full object-cover" loading="lazy" />
+                      <img
+                        src={item.image}
+                        alt={item.title}
+                        className="absolute inset-0 w-full h-full object-cover"
+                        loading="lazy"
+                      />
                     ) : (
-                       <div className="absolute inset-0 flex items-center justify-center text-black/20">
-                         No Image Provided
-                       </div>
+                      <div className="absolute inset-0 flex items-center justify-center text-black/20">
+                        No Image Provided
+                      </div>
                     )}
                   </div>
                 ))}
@@ -343,13 +366,7 @@ export const resinServiceV2: ServicePageConfig = {
   subtitle: "",
   contactLabel: "Get a quote",
   heroImage: heroImg,
-  trustedBy: [
-    { name: "Trusted Brand 1" },
-    { name: "Trusted Brand 2" },
-    { name: "Trusted Brand 3" },
-    { name: "Trusted Brand 4" },
-    { name: "Trusted Brand 5" },
-  ],
+  trustedBy: [],
   experienceSection: {
     label: "Resin",
     title: "Our Resin Surfacing Services",
@@ -420,21 +437,21 @@ export const resinServiceV2: ServicePageConfig = {
       body: "Enhance gardens and outdoor living areas with attractive resin patios and pathways. Resin surfaces provide a seamless, anti-slip finish that is comfortable underfoot and perfect for modern garden design.",
       ctaLabel: "Plan your project",
       ctaHref: "/contact",
-      image: section1Img2,
+      image: resin2,
     },
     {
       title: "Commercial & Public Areas",
       body: "Resin surfacing is ideal for commercial environments including courtyards, estate roads, cycle paths and public walkways. Its durability, permeability and clean finish make it a practical solution for high-traffic areas.",
       ctaLabel: "Discuss your project",
       ctaHref: "/contact",
-      image: section1Img3,
+      image: resin3,
     },
     {
       title: "Play Areas & Safety Surfaces",
       body: "Rubber crumb safety surfacing provides a soft, impact-absorbing surface ideal for playgrounds, sports areas and recreational spaces. Made from recycled tyres, it offers durability, safety and vibrant design options.",
       ctaLabel: "Enquire about safety surfacing",
       ctaHref: "/contact",
-      image: section1Img4,
+      image: resin4,
     },
   ],
   testimonials: [
@@ -842,6 +859,108 @@ export const stoneCarpetsServiceV2: ServicePageConfig = {
   contactCtaTitle: "Ready for a Seamless Floor?",
   contactCtaBody:
     "Whether it's for a residential kitchen, a pristine bathroom, or a high-end commercial showroom, we have the perfect stone carpet solution.",
+  contactCtaLabel: "Contact the team",
+  contactCtaHref: "/contact",
+};
+
+export const driveywaysServiceV2: ServicePageConfig = {
+  title: "Complete Driveway Solutions",
+  subtitle: "",
+  contactLabel: "Get a quote",
+  heroImage: heroImg,
+  trustedBy: [],
+  experienceSection: {
+    label: "Driveways",
+    title: "Our Driveway Installation Services",
+    intro:
+      "Andy Harragan & Sons Ltd provide a complete range of driveway installation services across Essex and surrounding areas. Whether you are looking for the classic appeal of block paving, the modern finish of resin, the practicality of tarmac or the character of shingle, our experienced team delivers durable, well-finished results for domestic and commercial properties.",
+    outro:
+      "A professionally installed driveway adds lasting kerb appeal, improves practicality and can increase the value of your property. Choosing Andy Harragan & Sons Ltd means investing in a surface built to perform and look great for years to come.",
+    services: [
+      "Block Paving Driveways",
+      "Resin Bound Driveways",
+      "Resin Bonded Driveways",
+      "Tarmac Driveways",
+      "Tar & Shingle Driveways",
+      "Shingle Driveways",
+      "Concrete Driveways",
+      "Permeable Driveways",
+      "Groundworks & Preparation",
+    ],
+    experienceText:
+      "With decades of hands-on experience across all major driveway surface types, our team delivers dependable workmanship and consistently high standards on every residential and commercial project.",
+    qualityText:
+      "We use trusted materials, careful groundwork preparation and proven installation methods to ensure every driveway we install is durable, practical and finished to a professional standard.",
+    serviceBlockText:
+      "From your first enquiry through to the finished driveway, we provide honest advice, clear quotations and a smooth, professional customer experience from start to finish.",
+  },
+  section1Title: "Driveways Built to Last",
+  section1Intro:
+    "Whatever surface you choose, the quality of a driveway depends on preparation, materials and installation. Andy Harragan & Sons covers every stage — from groundworks and drainage through to the finished surface — delivering driveways that perform well and look great long after installation.",
+  section1Cards: [
+    {
+      title: "Design & Material Choice",
+      image: dg1,
+      icon: LayoutGrid,
+      body: "We work with the full range of driveway surfaces — block paving, resin bound, resin bonded, tarmac, shingle and concrete. Our team helps you choose the right material for your budget, property style and long-term needs.",
+    },
+    {
+      title: "Groundworks & Preparation",
+      image: dg3,
+      icon: HardHat,
+      body: "Every driveway starts below the surface. Proper excavation, sub-base construction and drainage installation are what separate a lasting driveway from one that fails within years. We get the groundwork right every time.",
+    },
+    {
+      title: "SUDS-Compliant Options",
+      image: permDriveways,
+      icon: Droplets,
+      body: "Many of our surfaces — including permeable block paving and resin bound — allow rainwater to drain naturally through the surface, meeting planning requirements and reducing runoff without additional drainage infrastructure.",
+    },
+    {
+      title: "Long-Term Durability",
+      image: dg6,
+      icon: ShieldCheck,
+      body: "Regardless of the material you choose, every driveway we install is built to last. We use trusted suppliers, correct installation techniques and quality finishing throughout to deliver a surface that performs for years.",
+    },
+  ],
+  section1CtaLabel: "Get a quote",
+  section1CtaHref: "/contact",
+  section2Title: "Our Driveway Services",
+  section2Cards: [
+    {
+      title: "Block Paving Driveways",
+      body: "Durable, versatile and highly attractive, block paving is available in a wide range of colours, textures and laying patterns. It can be tailored to suit any property style and delivers long-lasting kerb appeal with minimal maintenance.",
+      ctaLabel: "Explore block paving",
+      ctaHref: "/services/block-paving",
+      image: blockPavingDriveways,
+    },
+    {
+      title: "Resin Driveways",
+      body: "Resin bound and resin bonded driveways offer a smooth, modern finish with excellent drainage and very low maintenance. A popular choice for contemporary homes and commercial properties looking for a clean, high-quality surface.",
+      ctaLabel: "Explore resin driveways",
+      ctaHref: "/services/resin-work",
+      image: section1Img,
+    },
+    {
+      title: "Tarmac & Shingle",
+      body: "Cost-effective and practical, tarmac delivers a clean hard-wearing surface while shingle and tar & shingle options add traditional character to driveways and access roads. Ideal for both residential and larger commercial areas.",
+      ctaLabel: "Explore tarmac & shingle",
+      ctaHref: "/services/tarmac-shingle",
+      image: dg5,
+    },
+    {
+      title: "Concrete & Other Surfaces",
+      body: "We also install concrete driveways and can advise on the full range of surfacing options for your property. Get in touch to discuss your requirements and we will recommend the most suitable solution for your project.",
+      ctaLabel: "Discuss your project",
+      ctaHref: "/contact",
+      image: dg4,
+    },
+  ],
+  galleryTitle: "Driveway Portfolio",
+  galleryImages: [dg1, dg2, dg3, dg4, dg5, dg6],
+  contactCtaTitle: "Ready to Transform Your Driveway?",
+  contactCtaBody:
+    "From block paving and resin to tarmac, shingle and concrete, we can help you choose the right surface and deliver a professional result from groundworks through to the finished driveway.",
   contactCtaLabel: "Contact the team",
   contactCtaHref: "/contact",
 };
