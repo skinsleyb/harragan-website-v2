@@ -42,7 +42,7 @@ const Portfolio = () => {
             {CATEGORIES.map((cat) => (
               <button
                 key={cat}
-                onClick={() => setActiveCategory(cat)}
+                onClick={() => { setActiveCategory(cat); setLightboxIndex(null); }}
                 className={`whitespace-nowrap flex-shrink-0 px-4 py-2 rounded-md text-xs font-bold uppercase tracking-wider transition-colors ${
                   activeCategory === cat
                     ? "bg-accent text-accent-foreground"

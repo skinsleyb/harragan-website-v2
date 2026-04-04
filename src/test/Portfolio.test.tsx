@@ -83,4 +83,17 @@ describe("Portfolio page", () => {
     fireEvent.click(imageButtons[0]);
     expect(screen.getByLabelText("Close lightbox")).toBeInTheDocument();
   });
+
+  it("closes lightbox when category changes", () => {
+    renderPortfolio();
+    // Open lightbox
+    const imageButtons = screen.getAllByRole("button").filter(
+      (btn) => btn.querySelector("img")
+    );
+    fireEvent.click(imageButtons[0]);
+    expect(screen.getByLabelText("Close lightbox")).toBeInTheDocument();
+    // Switch category — lightbox should close
+    fireEvent.click(screen.getByRole("button", { name: "Resin" }));
+    expect(screen.queryByLabelText("Close lightbox")).not.toBeInTheDocument();
+  });
 });
