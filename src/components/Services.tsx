@@ -1,18 +1,22 @@
 import { ArrowRight } from "lucide-react";
-import servicePatio from "@/assets/brown-block-paving-service.jpeg";
-import serviceResin from "@/assets/dorset-resin.jpg";
-import serviceRubber from "@/assets/service-rubber.jpeg";
-import serviceBlock from "@/assets/service-block.jpeg";
-import servicePathways from "@/assets/service-pathways.jpg";
-import serviceGroundworks from "@/assets/service-groundworks.jpg";
+import { Link } from "react-router-dom";
+import servicePatio from "@/assets/services/service-paving.jpeg";
+import serviceResin from "@/assets/services/service-resin.jpg";
+import serviceRubber from "@/assets/services/service-rubber.jpeg";
+import serviceBlock from "@/assets/services/service-block.jpeg";
+import servicePathways from "@/assets/services/service-pathway.jpg";
+import serviceFencing from "@/assets/services/service-fencing.jpeg";
+import serviceGroundworks from "@/assets/services/service-groundworks.jpg";
+import resinMillApproved from "@/assets/resin-mill-approved.svg";
+import bradstoneAssured from "@/assets/bradstone-assured-green.png";
 
 const landscapingServices = [
-  { title: "Resin", img: serviceResin },
-  { title: "Patio Design", img: servicePatio },
-  { title: "Rubber Crumb", img: serviceRubber },
-  { title: "Block Paving", img: serviceBlock },
-  { title: "Decking", img: servicePathways },
-  { title: "Pathways & Walkways", img: servicePathways },
+  { title: "Resin", img: serviceResin, href: "/services/resin-work", badge: resinMillApproved },
+  { title: "Block Paving", img: serviceBlock, href: "/services/block-paving", badge: bradstoneAssured },
+  { title: "Pathways & Walkways", img: servicePathways, href: "/services" },
+  { title: "Fencing", img: serviceFencing, href: "/services" },
+  { title: "Rubber Crumb", img: serviceRubber, href: "/services" },
+  { title: "Patio Design", img: servicePatio, href: "/services" },
 ];
 
 const Services = () => {
@@ -37,11 +41,12 @@ const Services = () => {
         <div className="mt-12">
           <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
             {landscapingServices.map((service) => (
-              <div
+              <Link
                 key={service.title}
+                to={service.href}
                 className="group overflow-hidden rounded-2xl border border-black/10 bg-white shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-lg"
               >
-                <div className="aspect-[4/3] overflow-hidden">
+                <div className="relative aspect-[4/3] overflow-hidden">
                   <img
                     src={service.img}
                     alt={service.title}
@@ -50,14 +55,24 @@ const Services = () => {
                     height={512}
                     className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
                   />
+                  {service.badge && (
+                    <div className="absolute bottom-3 right-3 rounded-lg bg-white/90 p-1.5 shadow-md backdrop-blur-sm">
+                      <img
+                        src={service.badge}
+                        alt="Approved logo"
+                        className="h-12 w-auto"
+                      />
+                    </div>
+                  )}
                 </div>
 
-                <div className="p-5 md:p-6">
+                <div className="flex items-center justify-between p-5 md:p-6">
                   <h3 className="text-lg font-black uppercase leading-tight text-black">
                     {service.title}
                   </h3>
+                  <ArrowRight className="h-5 w-5 text-black/40 transition-transform duration-300 group-hover:translate-x-1 group-hover:text-black" />
                 </div>
-              </div>
+              </Link>
             ))}
           </div>
         </div>

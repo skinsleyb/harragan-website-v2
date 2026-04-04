@@ -14,7 +14,8 @@ const ContactSection = () => {
           </h2>
 
           <p className="mx-auto mt-6 max-w-2xl text-base leading-relaxed text-white/70">
-            Direct access to our senior team. Fill in your details below and we typically respond within 2 hours.
+            Direct access to our senior team. Fill in your details below and we
+            typically respond within 2 hours.
           </p>
         </div>
 
@@ -81,7 +82,7 @@ const ContactSection = () => {
                 <div className="mt-6 flex items-center gap-3 text-white/40">
                   <div className="h-[1px] flex-1 bg-white/10"></div>
                   <p className="text-[11px] font-medium tracking-wide uppercase">
-                     * No obligation quote
+                    * No obligation quote
                   </p>
                   <div className="h-[1px] flex-1 bg-white/10"></div>
                 </div>
@@ -100,7 +101,7 @@ const ContactSection = () => {
 
             <div className="space-y-12">
               <a
-                href="mailto:aharraganandson@aol.com"
+                href="mailto:info@andyharraganandsons.co.uk"
                 className="group flex flex-col gap-3 transition"
               >
                 <div className="flex items-center gap-4">
@@ -110,7 +111,7 @@ const ContactSection = () => {
                   </p>
                 </div>
                 <p className="text-xl font-medium tracking-tight text-white border-b border-transparent group-hover:border-white/30 self-start transition-colors">
-                  aharraganandson@aol.com
+                  info@andyharraganandsons.co.uk
                 </p>
               </a>
 

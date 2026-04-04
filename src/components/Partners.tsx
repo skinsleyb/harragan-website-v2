@@ -1,5 +1,5 @@
-import resinMillImg from "@/assets/resin-mill-logo.svg";
-import bradstoneImg from "@/assets/bradstone.png";
+import resinMillImg from "@/assets/resin-mill-approved.svg";
+import bradstoneImg from "@/assets/bradstone-assured.png";
 import chandlersImg from "@/assets/chandlers.png";
 import marshallsImg from "@/assets/marshalls.svg";
 import tobermoreImg from "@/assets/tobermore-logo.svg";

@@ -1,6 +1,6 @@
-import serviceResin from "@/assets/service-resin.jpg";
-import serviceBlock from "@/assets/service-block.jpg";
-import serviceSandstone from "@/assets/service-sandstone.jpg";
+import serviceResin from "@/assets/services/service-resin.jpg";
+import serviceBlock from "@/assets/services/service-block.jpeg";
+import serviceSandstone from "@/assets/services/service-sandstone.jpg";
 
 export type BlogPost = {
   slug: string;
