@@ -1,4 +1,5 @@
 import { Phone, Menu, X, ChevronDown } from "lucide-react";
+import { trackEvent } from "@/analytics/track";
 import { useState, useEffect, useRef } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
@@ -133,12 +134,30 @@ const Navbar = () => {
         <div className="hidden lg:flex items-center gap-4">
           <a
             href="tel:+441245768150"
+            onClick={() =>
+              trackEvent('cta_interaction', {
+                cta_name: 'Navbar Phone Desktop',
+                cta_type: 'link_click',
+                cta_location: 'nav',
+                cta_page: window.location.pathname,
+                cta_destination: 'tel:+441245768150',
+              })
+            }
             className="flex items-center gap-2 text-primary-foreground text-sm font-bold tracking-wide transition-colors hover:text-accent"
           >
             <Phone size={14} className="text-accent" /> 01245 768 150
           </a>
           <Link
             to="/contact"
+            onClick={() =>
+              trackEvent('cta_interaction', {
+                cta_name: 'Navbar Get a Quote Desktop',
+                cta_type: 'button_click',
+                cta_location: 'nav',
+                cta_page: window.location.pathname,
+                cta_destination: '/contact',
+              })
+            }
             className="bg-accent hover:bg-accent/90 text-accent-foreground font-bold px-5 py-2.5 rounded-md text-xs uppercase tracking-wider transition-all transform hover:scale-[1.02] active:scale-95 shadow-md flex items-center justify-center"
           >
             Get a Quote
@@ -247,13 +266,31 @@ const Navbar = () => {
               <div className="pt-4 mt-2 border-t border-border/10">
                 <a
                   href="tel:+441245768150"
+                  onClick={() =>
+                    trackEvent('cta_interaction', {
+                      cta_name: 'Navbar Phone Mobile',
+                      cta_type: 'link_click',
+                      cta_location: 'nav',
+                      cta_page: window.location.pathname,
+                      cta_destination: 'tel:+441245768150',
+                    })
+                  }
                   className="flex items-center justify-center gap-2 text-primary-foreground text-sm font-bold tracking-wide transition-colors hover:text-accent py-3 mb-2"
                 >
                   <Phone size={16} className="text-accent" /> 01245 768 150
                 </a>
                 <Link
                   to="/contact"
-                  onClick={() => setMobileOpen(false)}
+                  onClick={() => {
+                    setMobileOpen(false);
+                    trackEvent('cta_interaction', {
+                      cta_name: 'Navbar Get a Quote Mobile',
+                      cta_type: 'button_click',
+                      cta_location: 'nav',
+                      cta_page: window.location.pathname,
+                      cta_destination: '/contact',
+                    });
+                  }}
                   className="w-full flex items-center justify-center gap-2 bg-accent hover:bg-accent/90 text-accent-foreground px-6 py-3.5 rounded-md font-bold text-sm uppercase tracking-wider shadow-lg transition-transform active:scale-95"
                 >
                   Get a Quote
