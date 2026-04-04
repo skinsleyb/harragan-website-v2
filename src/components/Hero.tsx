@@ -3,6 +3,7 @@ import googleImg from "@/assets/googl.png";
 import traderImg from "@/assets/trader.svg";
 
 import { ShieldCheck, ChevronRight } from "lucide-react";
+import { trackEvent } from "@/analytics/track";
 import { motion } from "framer-motion";
 
 const containerVariants = {
@@ -83,6 +84,15 @@ const Hero = () => (
             <motion.div variants={itemVariants} className="mt-8 sm:mt-10">
               <a
                 href="#contact"
+                onClick={() =>
+                  trackEvent('cta_interaction', {
+                    cta_name: 'Hero Get a Free Quote',
+                    cta_type: 'button_click',
+                    cta_location: 'hero',
+                    cta_page: window.location.pathname,
+                    cta_destination: '#contact',
+                  })
+                }
                 className="inline-flex items-center justify-center gap-2 rounded-lg bg-accent px-8 py-4 sm:px-10 sm:py-5 text-sm sm:text-base font-bold uppercase tracking-[0.2em] text-accent-foreground shadow-xl transition-all hover:bg-accent/90 focus:ring-4 focus:ring-accent/50 active:scale-95 group"
               >
                 Get a Free Quote
