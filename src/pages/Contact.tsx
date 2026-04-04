@@ -12,6 +12,8 @@ import {
 import Navbar from "@/components/Navbar";
 import PageHero from "@/components/PageHero";
 import Footer from "@/components/Footer";
+import { sendQuoteConfirmationEmail } from "@/lib/sendQuoteConfirmationEmail";
+import { trackEvent } from "@/analytics/track";
 
 const Contact = () => {
   const [formData, setFormData] = useState({
@@ -22,7 +24,22 @@ const Contact = () => {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
+    const fieldsCompleted = Object.values(formData).filter((v) => v.trim() !== "").length;
+
+    trackEvent('cta_interaction', {
+      cta_name: 'Contact Page Quote Form Submit',
+      cta_type: 'form_submit',
+      cta_location: 'contact_page',
+      cta_page: window.location.pathname,
+      cta_destination: '',
+      form_fields_completed: fieldsCompleted,
+    });
+
     alert("Thank you for your enquiry. We will be in touch shortly.");
+    sendQuoteConfirmationEmail({
+      name: formData.name.trim(),
+      email: formData.email.trim(),
+    });
   };
 
   return (
@@ -66,7 +83,7 @@ const Contact = () => {
                   Takes less than 10 seconds. We’ll call you back.
                 </p>
 
-                <form onSubmit={handleSubmit} className="mt-8 space-y-5">
+                <form onSubmit={handleSubmit} className="mt-8 space-y-5" data-form-name="contact-page-quote">
                   <div>
                     <label
                       htmlFor="fullName"
@@ -157,6 +174,15 @@ const Contact = () => {
                     href="https://facebook.com"
                     target="_blank"
                     rel="noreferrer"
+                    onClick={() =>
+                      trackEvent('cta_interaction', {
+                        cta_name: 'Contact Page Facebook',
+                        cta_type: 'link_click',
+                        cta_location: 'contact_page',
+                        cta_page: window.location.pathname,
+                        cta_destination: 'https://facebook.com',
+                      })
+                    }
                     className="flex items-center gap-3 rounded-2xl border border-black/10 px-4 py-4 text-sm font-medium text-black transition hover:border-black/25 hover:bg-black/[0.03]"
                   >
                     <Facebook className="h-5 w-5" />
@@ -167,6 +193,15 @@ const Contact = () => {
                     href="https://instagram.com"
                     target="_blank"
                     rel="noreferrer"
+                    onClick={() =>
+                      trackEvent('cta_interaction', {
+                        cta_name: 'Contact Page Instagram',
+                        cta_type: 'link_click',
+                        cta_location: 'contact_page',
+                        cta_page: window.location.pathname,
+                        cta_destination: 'https://instagram.com',
+                      })
+                    }
                     className="flex items-center gap-3 rounded-2xl border border-black/10 px-4 py-4 text-sm font-medium text-black transition hover:border-black/25 hover:bg-black/[0.03]"
                   >
                     <Instagram className="h-5 w-5" />
@@ -177,6 +212,15 @@ const Contact = () => {
                     href="https://linkedin.com"
                     target="_blank"
                     rel="noreferrer"
+                    onClick={() =>
+                      trackEvent('cta_interaction', {
+                        cta_name: 'Contact Page LinkedIn',
+                        cta_type: 'link_click',
+                        cta_location: 'contact_page',
+                        cta_page: window.location.pathname,
+                        cta_destination: 'https://linkedin.com',
+                      })
+                    }
                     className="flex items-center gap-3 rounded-2xl border border-black/10 px-4 py-4 text-sm font-medium text-black transition hover:border-black/25 hover:bg-black/[0.03]"
                   >
                     <Linkedin className="h-5 w-5" />
@@ -206,6 +250,15 @@ const Contact = () => {
                 <div className="mt-8 space-y-5">
                   <a
                     href="tel:01245768150"
+                    onClick={() =>
+                      trackEvent('cta_interaction', {
+                        cta_name: 'Contact Page Phone',
+                        cta_type: 'link_click',
+                        cta_location: 'contact_page',
+                        cta_page: window.location.pathname,
+                        cta_destination: 'tel:01245768150',
+                      })
+                    }
                     className="flex items-start gap-4 text-black transition hover:opacity-75"
                   >
                     <span className="flex h-12 w-12 items-center justify-center rounded-2xl border border-black/15 bg-white">
@@ -223,6 +276,15 @@ const Contact = () => {
 
                   <a
                     href="mailto:aharraganandson@aol.com"
+                    onClick={() =>
+                      trackEvent('cta_interaction', {
+                        cta_name: 'Contact Page Email',
+                        cta_type: 'link_click',
+                        cta_location: 'contact_page',
+                        cta_page: window.location.pathname,
+                        cta_destination: 'mailto:aharraganandson@aol.com',
+                      })
+                    }
                     className="flex items-start gap-4 text-black transition hover:opacity-75"
                   >
                     <span className="flex h-12 w-12 items-center justify-center rounded-2xl border border-black/15 bg-white">
