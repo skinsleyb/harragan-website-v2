@@ -7,6 +7,7 @@ import {
   Linkedin,
 } from "lucide-react";
 import { Link } from "react-router-dom";
+import { trackEvent } from "@/analytics/track";
 
 const Footer = () => (
   <footer className="bg-[#111111] text-primary-foreground pt-24">
@@ -125,6 +126,15 @@ const Footer = () => (
               <Phone size={15} className="mt-0.5 shrink-0" />
               <a
                 href="tel:01245768150"
+                onClick={() =>
+                  trackEvent('cta_interaction', {
+                    cta_name: 'Footer Phone',
+                    cta_type: 'link_click',
+                    cta_location: 'footer',
+                    cta_page: window.location.pathname,
+                    cta_destination: 'tel:01245768150',
+                  })
+                }
                 className="transition-colors hover:text-primary-foreground"
               >
                 01245 768 150
@@ -135,6 +145,15 @@ const Footer = () => (
               <Mail size={15} className="mt-0.5 shrink-0" />
               <a
                 href="mailto:info@andyharraganandsons.co.uk"
+                onClick={() =>
+                  trackEvent('cta_interaction', {
+                    cta_name: 'Footer Email',
+                    cta_type: 'link_click',
+                    cta_location: 'footer',
+                    cta_page: window.location.pathname,
+                    cta_destination: 'mailto:info@andyharraganandsons.co.uk',
+                  })
+                }
                 className="break-all transition-colors hover:text-primary-foreground"
               >
                 info@andyharraganandsons.co.uk
@@ -158,6 +177,15 @@ const Footer = () => (
                 target="_blank"
                 rel="noreferrer"
                 aria-label="Facebook"
+                onClick={() =>
+                  trackEvent('cta_interaction', {
+                    cta_name: 'Footer Facebook',
+                    cta_type: 'link_click',
+                    cta_location: 'footer',
+                    cta_page: window.location.pathname,
+                    cta_destination: 'https://facebook.com',
+                  })
+                }
                 className="flex h-10 w-10 items-center justify-center rounded-full border border-white/10 text-primary-foreground/70 transition hover:border-white/25 hover:text-primary-foreground"
               >
                 <Facebook size={16} />
@@ -168,6 +196,15 @@ const Footer = () => (
                 target="_blank"
                 rel="noreferrer"
                 aria-label="Instagram"
+                onClick={() =>
+                  trackEvent('cta_interaction', {
+                    cta_name: 'Footer Instagram',
+                    cta_type: 'link_click',
+                    cta_location: 'footer',
+                    cta_page: window.location.pathname,
+                    cta_destination: 'https://instagram.com',
+                  })
+                }
                 className="flex h-10 w-10 items-center justify-center rounded-full border border-white/10 text-primary-foreground/70 transition hover:border-white/25 hover:text-primary-foreground"
               >
                 <Instagram size={16} />
@@ -178,6 +215,15 @@ const Footer = () => (
                 target="_blank"
                 rel="noreferrer"
                 aria-label="LinkedIn"
+                onClick={() =>
+                  trackEvent('cta_interaction', {
+                    cta_name: 'Footer LinkedIn',
+                    cta_type: 'link_click',
+                    cta_location: 'footer',
+                    cta_page: window.location.pathname,
+                    cta_destination: 'https://linkedin.com',
+                  })
+                }
                 className="flex h-10 w-10 items-center justify-center rounded-full border border-white/10 text-primary-foreground/70 transition hover:border-white/25 hover:text-primary-foreground"
               >
                 <Linkedin size={16} />
