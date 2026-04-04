@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import project1 from "@/assets/project-1.jpg";
 import project2 from "@/assets/project-2.jpg";
 import project3 from "@/assets/project-3.jpg";
@@ -52,6 +53,15 @@ const RecentProjects = () => (
             </div>
           </div>
         ))}
+      </div>
+
+      <div className="mt-10 text-center">
+        <Link
+          to="/portfolio"
+          className="inline-flex items-center gap-2 bg-accent hover:bg-accent/90 text-accent-foreground font-bold px-6 py-3 rounded-md text-xs uppercase tracking-wider transition-all transform hover:scale-[1.02] active:scale-95 shadow-md"
+        >
+          View Full Portfolio
+        </Link>
       </div>
     </div>
   </section>
