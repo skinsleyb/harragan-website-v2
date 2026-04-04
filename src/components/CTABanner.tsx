@@ -1,4 +1,5 @@
 import { Phone, Mail } from "lucide-react";
+import { trackEvent } from "@/analytics/track";
 
 const CTABanner = () => (
   <section id="contact" className="relative z-10 pb-0 scroll-mt-24">
@@ -22,6 +23,15 @@ const CTABanner = () => (
           <div className="flex flex-col gap-3 md:min-w-[200px]">
             <a
               href="tel:+441245000000"
+              onClick={() =>
+                trackEvent('cta_interaction', {
+                  cta_name: 'CTABanner Call Us',
+                  cta_type: 'link_click',
+                  cta_location: 'cta_banner',
+                  cta_page: window.location.pathname,
+                  cta_destination: 'tel:+441245000000',
+                })
+              }
               className="flex items-center justify-center gap-2 bg-accent hover:bg-accent-glow text-accent-foreground font-bold px-6 py-3.5 rounded-lg text-xs uppercase tracking-wider transition-colors"
             >
               <Phone size={16} />
@@ -29,6 +39,15 @@ const CTABanner = () => (
             </a>
             <a
               href="mailto:info@andyharraganandsons.co.uk"
+              onClick={() =>
+                trackEvent('cta_interaction', {
+                  cta_name: 'CTABanner Email Us',
+                  cta_type: 'link_click',
+                  cta_location: 'cta_banner',
+                  cta_page: window.location.pathname,
+                  cta_destination: 'mailto:info@andyharraganandsons.co.uk',
+                })
+              }
               className="flex items-center justify-center gap-2 bg-primary-foreground/10 border border-primary-foreground/30 hover:bg-primary-foreground/20 text-primary-foreground font-bold px-6 py-3.5 rounded-lg text-xs uppercase tracking-wider transition-colors"
             >
               <Mail size={16} />

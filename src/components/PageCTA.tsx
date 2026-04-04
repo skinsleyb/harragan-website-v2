@@ -1,5 +1,6 @@
 import { Phone, Mail } from "lucide-react";
 import { Link } from "react-router-dom";
+import { trackEvent } from "@/analytics/track";
 
 const PageCTA = () => (
   <section className="py-20 bg-background">
@@ -18,12 +19,30 @@ const PageCTA = () => (
           <div className="flex flex-col gap-3 md:min-w-[200px]">
             <a
               href="tel:+441245000000"
+              onClick={() =>
+                trackEvent('cta_interaction', {
+                  cta_name: 'PageCTA Call Us',
+                  cta_type: 'link_click',
+                  cta_location: 'page_cta',
+                  cta_page: window.location.pathname,
+                  cta_destination: 'tel:+441245000000',
+                })
+              }
               className="flex items-center justify-center gap-2 bg-accent hover:bg-accent/90 text-accent-foreground font-bold px-6 py-3.5 rounded-lg text-xs uppercase tracking-wider transition-colors"
             >
               <Phone size={16} /> Call Us
             </a>
             <Link
               to="/contact"
+              onClick={() =>
+                trackEvent('cta_interaction', {
+                  cta_name: 'PageCTA Contact Us',
+                  cta_type: 'link_click',
+                  cta_location: 'page_cta',
+                  cta_page: window.location.pathname,
+                  cta_destination: '/contact',
+                })
+              }
               className="flex items-center justify-center gap-2 bg-primary-foreground/10 border border-primary-foreground/30 hover:bg-primary-foreground/20 text-primary-foreground font-bold px-6 py-3.5 rounded-lg text-xs uppercase tracking-wider transition-colors"
             >
               <Mail size={16} /> Contact Us
