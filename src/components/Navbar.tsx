@@ -116,6 +116,13 @@ const Navbar = () => {
           </Link>
 
           <Link
+            to="/portfolio"
+            className="text-primary-foreground/90 hover:text-primary-foreground text-xs font-semibold uppercase tracking-wider transition-colors"
+          >
+            Portfolio
+          </Link>
+
+          <Link
             to="/contact"
             className="text-primary-foreground/90 hover:text-primary-foreground text-xs font-semibold uppercase tracking-wider transition-colors"
           >
@@ -220,7 +227,15 @@ const Navbar = () => {
               >
                 Blog
               </Link>
-              
+
+              <Link
+                to="/portfolio"
+                onClick={() => setMobileOpen(false)}
+                className="block py-3 text-primary-foreground/90 hover:text-accent font-semibold uppercase tracking-wide text-[15px] transition-colors"
+              >
+                Portfolio
+              </Link>
+
               <Link
                 to="/contact"
                 onClick={() => setMobileOpen(false)}
