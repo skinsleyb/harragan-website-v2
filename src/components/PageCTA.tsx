@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import { trackEvent } from "@/analytics/track";
 
 const PageCTA = () => (
-  <section className="py-20 bg-background">
+  <section data-section="page_cta" className="py-20 bg-background">
     <div className="container mx-auto px-4">
       <div className="max-w-[85%] mx-auto bg-primary rounded-2xl shadow-2xl p-8 md:p-12">
         <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-6">

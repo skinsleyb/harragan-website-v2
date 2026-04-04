@@ -27,7 +27,7 @@ const itemVariants = {
 };
 
 const Hero = () => (
-  <section className="relative isolate overflow-hidden min-h-[100svh] sm:min-h-[680px] lg:min-h-[760px] flex items-start sm:items-center">
+  <section data-section="hero" className="relative isolate overflow-hidden min-h-[100svh] sm:min-h-[680px] lg:min-h-[760px] flex items-start sm:items-center">
     <img
       src={heroImg}
       alt="Professional resin driveway installation by Andy Harragan and Sons, Chelmsford Essex"

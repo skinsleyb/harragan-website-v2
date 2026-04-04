@@ -2,7 +2,7 @@ import { Phone, Mail } from "lucide-react";
 import { trackEvent } from "@/analytics/track";
 
 const CTABanner = () => (
-  <section id="contact" className="relative z-10 pb-0 scroll-mt-24">
+  <section id="contact" data-section="cta_banner" className="relative z-10 pb-0 scroll-mt-24">
     <div className="container mx-auto px-4">
       <div className="w-full max-w-[75%] mx-auto bg-primary rounded-2xl shadow-2xl p-8 md:p-12 -mb-20 relative z-10">
         <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-6">
