@@ -1,8 +1,36 @@
 import { ArrowRight, Mail, Phone } from "lucide-react";
+import { sendQuoteConfirmationEmail } from "@/lib/sendQuoteConfirmationEmail";
+import { trackEvent } from "@/analytics/track";
 
 const ContactSection = () => {
+  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    const form = e.currentTarget;
+    if (!form.checkValidity()) {
+      form.reportValidity();
+      return;
+    }
+    const fd = new FormData(form);
+    const name = String(fd.get("fullName") ?? "").trim();
+    const email = String(fd.get("email") ?? "").trim();
+    const phone = String(fd.get("phone") ?? "").trim();
+    const fieldsCompleted = [name, email, phone].filter(Boolean).length;
+
+    trackEvent('cta_interaction', {
+      cta_name: 'ContactSection Quote Form Submit',
+      cta_type: 'form_submit',
+      cta_location: 'contact_section',
+      cta_page: window.location.pathname,
+      cta_destination: '',
+      form_fields_completed: fieldsCompleted,
+    });
+
+    alert("Thank you for your enquiry. We will be in touch shortly.");
+    sendQuoteConfirmationEmail({ name, email });
+  };
+
   return (
-    <section id="contact" className="bg-zinc-950 text-white py-24 md:py-32">
+    <section id="contact" data-section="contact" className="bg-zinc-950 text-white py-24 md:py-32">
       <div className="container mx-auto px-4">
         <div className="mx-auto max-w-3xl text-center">
           <p className="text-[11px] font-bold uppercase tracking-[0.22em] text-white/50">
@@ -22,12 +50,13 @@ const ContactSection = () => {
         <div className="mx-auto mt-16 grid max-w-5xl gap-16 lg:grid-cols-[1fr_auto_0.8fr] lg:gap-24 lg:items-start">
           {/* Form */}
           <div className="w-full">
-            <form className="space-y-10 group/form">
+            <form className="space-y-10 group/form" onSubmit={handleSubmit} data-form-name="contact-section-quote">
               <div className="relative">
                 <input
                   id="fullName"
                   name="fullName"
                   type="text"
+                  required
                   placeholder="Your full name"
                   className="peer w-full border-b border-white/20 bg-transparent py-4 text-base text-white outline-none transition-colors placeholder:text-transparent focus:border-white"
                 />
@@ -44,6 +73,7 @@ const ContactSection = () => {
                   id="email"
                   name="email"
                   type="email"
+                  required
                   placeholder="you@example.com"
                   className="peer w-full border-b border-white/20 bg-transparent py-4 text-base text-white outline-none transition-colors placeholder:text-transparent focus:border-white"
                 />
@@ -60,6 +90,7 @@ const ContactSection = () => {
                   id="phone"
                   name="phone"
                   type="tel"
+                  required
                   placeholder="Your phone number"
                   className="peer w-full border-b border-white/20 bg-transparent py-4 text-base text-white outline-none transition-colors placeholder:text-transparent focus:border-white"
                 />
@@ -102,6 +133,15 @@ const ContactSection = () => {
             <div className="space-y-12">
               <a
                 href="mailto:info@andyharraganandsons.co.uk"
+                onClick={() =>
+                  trackEvent('cta_interaction', {
+                    cta_name: 'ContactSection Email',
+                    cta_type: 'link_click',
+                    cta_location: 'contact_section',
+                    cta_page: window.location.pathname,
+                    cta_destination: 'mailto:info@andyharraganandsons.co.uk',
+                  })
+                }
                 className="group flex flex-col gap-3 transition"
               >
                 <div className="flex items-center gap-4">
@@ -117,6 +157,15 @@ const ContactSection = () => {
 
               <a
                 href="tel:01245768150"
+                onClick={() =>
+                  trackEvent('cta_interaction', {
+                    cta_name: 'ContactSection Phone',
+                    cta_type: 'link_click',
+                    cta_location: 'contact_section',
+                    cta_page: window.location.pathname,
+                    cta_destination: 'tel:01245768150',
+                  })
+                }
                 className="group flex flex-col gap-3 transition"
               >
                 <div className="flex items-center gap-4">
