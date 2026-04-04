@@ -1,5 +1,6 @@
 import { useEffect, useMemo, useState } from "react";
 import { ArrowRight, MousePointerClick } from "lucide-react";
+import { trackEvent } from "@/analytics/track";
 
 type HeroImageValue = string | string[] | undefined;
 
@@ -81,6 +82,15 @@ export function ServiceHero({
             <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:items-center">
               <a
                 href="#cta"
+                onClick={() =>
+                  trackEvent('cta_interaction', {
+                    cta_name: 'ServiceHero Contact CTA',
+                    cta_type: 'link_click',
+                    cta_location: 'service_hero',
+                    cta_page: window.location.pathname,
+                    cta_destination: '#cta',
+                  })
+                }
                 className="inline-flex w-fit items-center gap-3 rounded-full bg-black px-6 py-3.5 text-sm font-semibold text-white transition hover:-translate-y-0.5 hover:bg-black/90"
               >
                 {contactLabel}
@@ -89,7 +99,16 @@ export function ServiceHero({
 
               <button
                 type="button"
-                onClick={scrollToFirstSection}
+                onClick={() => {
+                  scrollToFirstSection();
+                  trackEvent('cta_interaction', {
+                    cta_name: 'ServiceHero Explore More',
+                    cta_type: 'button_click',
+                    cta_location: 'service_hero',
+                    cta_page: window.location.pathname,
+                    cta_destination: '',
+                  });
+                }}
                 className="inline-flex w-fit items-center gap-3 rounded-full border border-black/10 bg-white/80 px-5 py-3.5 text-sm font-semibold text-black backdrop-blur-sm transition hover:bg-white"
                 aria-label="Scroll to first section"
               >

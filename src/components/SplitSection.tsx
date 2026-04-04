@@ -1,4 +1,5 @@
 import { ArrowRight } from "lucide-react";
+import { trackEvent } from "@/analytics/track";
 
 export interface SplitSectionProps {
   title: string;
@@ -106,13 +107,31 @@ export function SplitSection({
               {buttonHref ? (
                 <a
                   href={buttonHref}
+                  onClick={() =>
+                    trackEvent('cta_interaction', {
+                      cta_name: 'SplitSection CTA',
+                      cta_type: 'link_click',
+                      cta_location: 'split_section',
+                      cta_page: window.location.pathname,
+                      cta_destination: buttonHref,
+                    })
+                  }
                   className="inline-flex items-center gap-2 bg-black text-white px-6 py-3 text-[15px] font-semibold hover:bg-zinc-800"
                 >
                   {buttonText}
                 </a>
               ) : (
                 <button
-                  onClick={onClick}
+                  onClick={() => {
+                    if (onClick) onClick();
+                    trackEvent('cta_interaction', {
+                      cta_name: 'SplitSection CTA',
+                      cta_type: 'button_click',
+                      cta_location: 'split_section',
+                      cta_page: window.location.pathname,
+                      cta_destination: '',
+                    });
+                  }}
                   className="inline-flex items-center gap-2 bg-black text-white px-6 py-3 text-[15px] font-semibold hover:bg-zinc-800"
                 >
                   {buttonText}
