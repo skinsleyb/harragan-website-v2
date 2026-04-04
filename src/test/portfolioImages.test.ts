@@ -30,9 +30,9 @@ describe("portfolioImages", () => {
   });
 
   it("all image categories are valid CATEGORIES values", () => {
-    const validCategories = new Set(CATEGORIES.filter((c) => c !== "All"));
+    const validCategories = new Set<string>(CATEGORIES.filter((c) => c !== "All"));
     for (const img of portfolioImages) {
-      expect(validCategories.has(img.category as any)).toBe(true);
+      expect(validCategories.has(img.category)).toBe(true);
     }
   });
 });
